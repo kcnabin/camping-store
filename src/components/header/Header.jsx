@@ -8,7 +8,8 @@ import UserDropdown from './UserDropdown'
 import LoginDropdown from './LoginDropdown'
 
 const Header = () => {
-  const { value: user } = useAuth()
+  const { auth } = useAuth()
+  console.log('auth :', auth);
 
   return (
     <div className='bg-title text-white py-3 px-4 d-flex justify-content-between align-items-center'>
@@ -20,6 +21,8 @@ const Header = () => {
           Camping Store
         </div>
       </Link>
+
+      {auth?.user?.name}
 
       <div className='dropdown'>
         <div
@@ -37,7 +40,7 @@ const Header = () => {
         </div>
 
         <div className="dropdown-menu px-2">
-          {user
+          {auth?.user
             ? (<UserDropdown />)
             : <LoginDropdown />}
         </div>

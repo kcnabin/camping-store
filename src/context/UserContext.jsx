@@ -1,21 +1,29 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-export const UserContext = createContext()
+export const UserContext = createContext({})
 
 export const UserContextProvider = ({ children }) => {
-  const [value, setValue] = useState('')
+  const [auth, setAuth] = useState({
+    token: '',
+    user: {
+      name: '',
+      isAdmin: ''
+    }
+  })
 
   useEffect(() => {
-    if (!value) {
+    console.log('auth?.token :', auth?.token);
+    if (!auth?.token) {
+
       const ls = localStorage.getItem('camping-store-user')
       if (ls) {
-        setValue(JSON.parse(ls))
+        setAuth(JSON.parse(ls))
       }
     }
-  }, [value])
+  }, [auth?.token])
 
   return (
-    <UserContext.Provider value={{ value, setValue }}>
+    <UserContext.Provider value={{ auth, setAuth }}>
       {children}
     </UserContext.Provider>
   )

@@ -9,7 +9,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const { setValue: setLoginUser } = useAuth()
+  const { setAuth } = useAuth()
   const navigate = useNavigate()
 
   const handleLogin = async (e) => {
@@ -19,9 +19,8 @@ const LoginForm = () => {
 
     try {
       const { data } = await axios.post('/login', userObject)
-      console.log('data :', data);
       localStorage.setItem('camping-store-user', JSON.stringify(data))
-      setLoginUser(data)
+      setAuth(data)
 
       toast.success(`'${data.user.name}' logged in!`)
       navigate('/')
