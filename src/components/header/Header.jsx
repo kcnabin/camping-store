@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom'
 
 import MenuIcon from '../../svgIcons/MenuIcon'
 import ProfileIcon from '../../svgIcons/ProfileIcon'
+import { useAuth } from '../../context/UserContext'
+import UserDropdown from './UserDropdown'
+import LoginDropdown from './LoginDropdown'
 
 const Header = () => {
+  const { value: user } = useAuth()
+
   return (
     <div className='bg-title text-white py-3 px-4 d-flex justify-content-between align-items-center'>
       <Link to='/' className='d-flex align-items-center'>
@@ -16,18 +21,25 @@ const Header = () => {
         </div>
       </Link>
 
-      <div>
+      <div className='dropdown'>
         <div
-          className='d-flex align-items-center border py-1 px-2 border-2 rounded-pill'
+          className='d-flex align-items-center border py-1 px-2 border-2 rounded-pill btn'
+          data-bs-toggle='dropdown'
         >
           <div className='text-white me-2'>
             <MenuIcon />
           </div>
 
-          <div className=''>
+          <div className='text-white'>
             <ProfileIcon />
           </div>
 
+        </div>
+
+        <div className="dropdown-menu px-2">
+          {user
+            ? (<UserDropdown />)
+            : <LoginDropdown />}
         </div>
       </div>
     </div>

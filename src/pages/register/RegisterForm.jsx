@@ -30,7 +30,11 @@ const RegisterForm = () => {
       toast.success('New user created! Redirecting to login page.',
         { hideProgressBar: false })
 
-      navigate('/login')
+      clearForm()
+
+      setTimeout(() => {
+        navigate('/login')
+      }, 4000);
 
     } catch (error) {
       handleError(error)
