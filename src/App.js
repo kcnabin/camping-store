@@ -12,6 +12,10 @@ import AdminCheck from "./adminPages/AdminCheck";
 import AdminPage from "./adminPages/AdminPage";
 import UserCheck from "./userPages/UserCheck";
 import UserPage from "./userPages/UserPage";
+import CreateCategory from "./adminPages/components/category/CreateCategory";
+import CreateProducts from "./adminPages/components/products/CreateProducts";
+import AllUsers from "./adminPages/components/users/AllUsers";
+import AllProducts from "./adminPages/components/products/AllProducts";
 
 const App = () => {
   axios.defaults.baseURL = `http://localhost:3001/api`;
@@ -31,6 +35,10 @@ const App = () => {
         <Route path="/dashboard" element={<AdminCheck />}>
           <Route path="admin" element={<Layout />}>
             <Route path="" element={<AdminPage />} />
+            <Route path="create-category" element={<CreateCategory />} />
+            <Route path="create-products" element={<CreateProducts />} />
+            <Route path="products" element={<AllProducts />} />
+            <Route path="users" element={<AllUsers />} />
           </Route>
         </Route>
 

@@ -9,7 +9,6 @@ import LoginDropdown from './LoginDropdown'
 
 const Header = () => {
   const { auth } = useAuth()
-  console.log('auth :', auth);
 
   return (
     <div className='bg-title text-white py-3 px-4 d-flex justify-content-between align-items-center'>
@@ -21,8 +20,6 @@ const Header = () => {
           Camping Store
         </div>
       </Link>
-
-      {auth?.user?.name}
 
       <div className='dropdown'>
         <div

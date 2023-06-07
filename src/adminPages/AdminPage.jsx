@@ -1,8 +1,14 @@
 import React from 'react'
+import DashboardLayout from '../components/DashboardLayout'
+import AdminMenu from './components/AdminMenu'
+import AdminInfo from './components/AdminInfo'
 
 const AdminPage = () => {
   return (
-    <div className='p-2 h5'>AdminPage</div>
+    <DashboardLayout
+      left={<AdminMenu />}
+      right={<AdminInfo />}
+    />
   )
 }
 
