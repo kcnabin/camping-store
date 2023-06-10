@@ -10,7 +10,6 @@ import CartIcon from '../../svgIcons/CartIcon'
 
 const Header = () => {
   const { auth } = useAuth()
-  console.log('auth :', auth);
 
   return (
     <div className='bg-title text-white py-3 px-4 d-flex justify-content-between align-items-center'>

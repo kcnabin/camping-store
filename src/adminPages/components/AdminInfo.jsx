@@ -7,7 +7,7 @@ const AdminInfo = () => {
     return (
       <>
         <h4 className="text-center">
-          Info about Admin
+          Admin Profile
         </h4>
 
         <div className="mt-3">

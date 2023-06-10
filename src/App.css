@@ -8,10 +8,7 @@ a {
   text-decoration: none;
 }
 
-.body-height {
-  min-height: calc(100vh - 68px);
-}
-
+.body-height,
 .full-page {
   min-height: calc(100vh - 68px);
 }
@@ -37,7 +34,6 @@ a {
 .dropdown-options {
   background-color: #ffffff;
   color: rgba(12, 11, 8, 0.75);
-  font-weight: ;
   padding: 8px 16px 4px;
   font-size: 16px;
 }
