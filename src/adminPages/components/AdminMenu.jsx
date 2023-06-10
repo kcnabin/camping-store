@@ -9,7 +9,7 @@ const AdminMenu = () => {
   const path = getPath(location.pathname)
 
   const getStyle = (sentPath) => {
-    let style = `px-3 py-2 mb-2 text-center border rounded-4`
+    let style = `px-3 py-2 mb-4 text-center border rounded-4`
     if (sentPath.toLowerCase() === path.toLowerCase()) {
       style += ' text-white bg-success'
     }

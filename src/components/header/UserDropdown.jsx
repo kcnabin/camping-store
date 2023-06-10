@@ -16,18 +16,20 @@ const UserDropdown = () => {
 
   return (
     <div className='d-flex flex-column'>
-      <Link
-        to={auth?.user?.isAdmin ? '/dashboard/admin' : '/dashboard/user'}
-      >
-        Dashboard
-      </Link>
+      <div className='dropdown-options'>
+        <Link
+          to={auth?.user?.isAdmin ? '/dashboard/admin' : '/dashboard/user'}
+        >
+          Dashboard
+        </Link>
+      </div>
 
-      <div
-        className='btn p-0 text-start'
+      <Link
+        className='text-start dropdown-options'
         onClick={handleLogout}
       >
         Logout
-      </div>
+      </Link>
     </div>
   )
 }

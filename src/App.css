@@ -1,5 +1,6 @@
 .bg-title {
-  background-color: #3b3c36;
+  /* background-color: #3b3c36; */
+  background-color: #000000;
 }
 
 a {
@@ -11,6 +12,10 @@ a {
   min-height: calc(100vh - 68px);
 }
 
+.full-page {
+  min-height: calc(100vh - 68px);
+}
+
 .justify-center {
   display: flex;
   justify-content: center;
@@ -19,4 +24,24 @@ a {
 .align-center {
   display: flex;
   align-items: center;
+}
+
+.body-color {
+  color: rgba(12, 11, 8, 0.75);
+}
+
+.header-bg-color {
+  color: rgb(78, 77, 73);
+}
+
+.dropdown-options {
+  background-color: #ffffff;
+  color: rgba(12, 11, 8, 0.75);
+  font-weight: ;
+  padding: 8px 16px 4px;
+  font-size: 16px;
+}
+
+.dropdown-options:hover {
+  background-color: #f4f2ed;
 }
