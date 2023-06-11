@@ -34,7 +34,7 @@ const Header = () => {
           )
         }
 
-        <Link className='align-center ms-4' to='/cart'>
+        <Link className='align-center ms-4 fw-bold' to='/cart'>
           <CartIcon />
           <span className='ms-2 d-none d-md-block'>Cart</span>
         </Link>

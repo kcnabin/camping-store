@@ -42,10 +42,23 @@ a {
   background-color: #f4f2ed;
 }
 
-.hover-zoom {
+.hover-zoom,
+.icon-zoom {
   transition: transform 0.3s;
+}
+
+.icon-zoom:hover {
+  transform: scale(1.4);
 }
 
 .hover-zoom:hover {
   transform: scale(1.05);
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
+}
+
+.text-justify {
+  text-align: justify;
 }
