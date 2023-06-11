@@ -15,8 +15,10 @@ import UserPage from "./userPages/UserPage";
 import CreateCategory from "./adminPages/components/category/CreateCategory";
 import CreateProducts from "./adminPages/components/products/CreateProducts";
 import AllUsers from "./adminPages/components/users/AllUsers";
-import AllProducts from "./adminPages/components/products/AllProducts";
+import AllProducts from "./adminPages/components/products/AllProductsLayout";
 import CartPage from "./components/cart/CartPage";
+import CreateProductsForm from "./adminPages/components/products/CreateProductsForm";
+import ProductInfo from "./pages/products/ProductInfo";
 
 const App = () => {
   axios.defaults.baseURL = `http://localhost:3001/api`;
@@ -30,6 +32,7 @@ const App = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/product/:pId" element={<ProductInfo />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>
@@ -40,6 +43,7 @@ const App = () => {
             <Route path="create-category" element={<CreateCategory />} />
             <Route path="create-products" element={<CreateProducts />} />
             <Route path="products" element={<AllProducts />} />
+            <Route path="products/edit/:pId" element={<CreateProductsForm />} />
             <Route path="users" element={<AllUsers />} />
           </Route>
         </Route>

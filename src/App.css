@@ -34,10 +34,18 @@ a {
 .dropdown-options {
   background-color: #ffffff;
   color: rgba(12, 11, 8, 0.75);
-  padding: 8px 16px 4px;
+  padding: 8px 16px 8px;
   font-size: 16px;
 }
 
 .dropdown-options:hover {
   background-color: #f4f2ed;
+}
+
+.hover-zoom {
+  transition: transform 0.3s;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.05);
 }

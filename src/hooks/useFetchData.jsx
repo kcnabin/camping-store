@@ -3,7 +3,7 @@ import { handleError } from "../helper/handleError";
 import { getTokenHeader } from "../helper/getTokenHeader";
 import axios from "axios";
 
-export const useFetchData = (path) => {
+export const useFetchData = (path, dep1 = '', dep2 = '', dep3 = '') => {
   const [value, setValue] = useState("");
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const useFetchData = (path) => {
     };
 
     fetchData();
-  }, [path]);
+  }, [path, dep1, dep2, dep3]);
 
   return { value, setValue };
 };

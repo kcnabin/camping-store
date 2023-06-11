@@ -24,6 +24,43 @@ const UserDropdown = () => {
         </Link>
       </div>
 
+      {
+        auth?.user?.isAdmin ? (
+          <div className='d-blocl d-sm-none'>
+            <div className='dropdown-options'>
+              <Link
+                to={'/dashboard/admin/create-category'}
+              >
+                Create Category
+              </Link>
+            </div>
+            <div className='dropdown-options'>
+              <Link
+                to={'/dashboard/admin/create-products'}
+              >
+                Create Products
+              </Link>
+            </div>
+
+            <div className='dropdown-options'>
+              <Link
+                to={'/dashboard/admin/Products'}
+              >
+                All Products
+              </Link>
+            </div>
+
+            <div className='dropdown-options'>
+              <Link
+                to={'/dashboard/admin/users'}
+              >
+                Users
+              </Link>
+            </div>
+          </div>
+        ) : ''
+      }
+
       <Link
         className='text-start dropdown-options'
         onClick={handleLogout}
