@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 const UserCheck = () => {
   const isUser = useCheckAuth("/user-auth");
 
-  return isUser ? <Outlet /> : <LoadingPage />;
+  return isUser ? <Outlet /> : <LoadingPage path="" />;
 };
 
 export default UserCheck;

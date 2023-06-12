@@ -7,7 +7,7 @@ const AdminCheck = () => {
   const isAdmin = useCheckAuth('/admin-auth')
   console.log('isAdmin :', isAdmin);
 
-  return isAdmin ? <Outlet /> : <LoadingPage />
+  return isAdmin ? <Outlet /> : <LoadingPage path='' />
 }
 
 export default AdminCheck
