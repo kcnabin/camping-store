@@ -25,19 +25,25 @@ const EachProductLayout = ({ product }) => {
           <h6>
             Price: NRs {product.price.toLocaleString()}
           </h6>
-          <p className="card-text fw-lighter lh-sm mt-3">
+          <p className="card-text fw-lighter lh-sm mt-2">
             {product.descriptions[0].substring(0, 40)}...
           </p>
           <div className='flex-center'>
-            <Link className="btn btn-secondary me-2"
+            <Link className="btn btn-secondary me-2 mt-2"
               to={`/dashboard/admin/products/edit/${product._id}`}
             >
               Edit
             </Link>
 
-            <button className="btn btn-danger">
+            <button className="btn btn-danger me-2 mt-2">
               Delete
             </button>
+
+            <Link className="btn btn-dark mt-2"
+              to={`/products/${product._id}`}
+            >
+              View
+            </Link>
           </div>
         </div>
       </div>

@@ -9,8 +9,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 const CreateProductsForm = () => {
   const { pId } = useParams()
-  console.log('pId :', pId);
+
   const [category, setCategory] = useState('')
+  const [categoryId, setCategoryId] = useState('')
   const [name, setName] = useState('')
   const [brand, setBrand] = useState('')
   const [size, setSize] = useState('')
@@ -22,6 +23,7 @@ const CreateProductsForm = () => {
 
   const [feature, setFeature] = useState('')
   const { value: allCategories } = useFetchData('/category/all')
+
   const [product, setProduct] = useState('')
   const navigate = useNavigate()
 
@@ -30,8 +32,10 @@ const CreateProductsForm = () => {
       const fetchData = async () => {
         try {
           const { data } = await axios.get(`/products/${pId}`)
+          console.log('data :', data);
           setProduct(data)
           setCategory(data.category)
+          setCategoryId(data.categoryId._id)
           setName(data.name)
           setBrand(data.brand)
           setSize(data.size)
@@ -51,6 +55,7 @@ const CreateProductsForm = () => {
 
   const clearForm = () => {
     setCategory('')
+    setCategoryId('')
     setName('')
     setBrand('')
     setSize('')
@@ -65,9 +70,8 @@ const CreateProductsForm = () => {
   const handleAddProducts = async (e) => {
     e.preventDefault()
     const productObject = {
-      category, name, brand, size, color, price, discount, photos, descriptions
+      category, categoryId, name, brand, size, color, price, discount, photos, descriptions
     }
-    console.log('productObject :', productObject);
 
     if (descriptions.length < 1) {
       return toast.error('Add atleast one description !')
@@ -77,24 +81,26 @@ const CreateProductsForm = () => {
       return toast.error('Add atleast one photo!')
     }
 
-    if (!category || !name || !brand || !size || !color || !price || !discount) {
+    if (!category || !categoryId || !name || !brand || !size || !color || !price || !discount) {
       return toast.error('All Fields are required')
     }
 
     try {
       if (pId) {
         await axios.put(`/products/${product._id}`, productObject, getTokenHeader())
+        setTimeout(() => {
+          navigate(`/product/${product._id}`)
+        }, 2000)
+
       } else {
-        await axios.post('/products/add', productObject, getTokenHeader())
+        const newProduct = await axios.post('/products/add', productObject, getTokenHeader())
+        setTimeout(() => {
+          navigate(`/product/${newProduct.data._id}`)
+        }, 2000)
       }
 
       toast.success(pId ? 'Product Updated' : 'Product Added!')
-      setTimeout(() => {
-        navigate(`/product/${product._id}`)
-      }, 2000)
-
       clearForm()
-
 
     } catch (error) {
       return handleError(error)
@@ -107,6 +113,13 @@ const CreateProductsForm = () => {
       setDescriptions(descriptions.concat(feature))
       setFeature('')
     }
+  }
+
+  const handleCategory = e => {
+    e.preventDefault()
+    setCategory(e.target.value)
+    const selectedCategory = allCategories.filter(category => category.name === e.target.value)
+    setCategoryId(selectedCategory[0]._id)
   }
 
 
@@ -128,7 +141,7 @@ const CreateProductsForm = () => {
                 className='form-select'
                 id="pCategory"
                 value={category}
-                onChange={e => setCategory(e.target.value)}
+                onChange={handleCategory}
               >
                 <option>
                   Select Category
