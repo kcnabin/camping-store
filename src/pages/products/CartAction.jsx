@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useCart } from '../../context/CartContext'
+import { toast } from 'react-toastify'
 
 const CartAction = ({ product }) => {
   const [quantity, setQuantity] = useState(1)
@@ -9,7 +11,7 @@ const CartAction = ({ product }) => {
     }
   }
 
-  const [cart, setCart] = useState([])
+  const { cart, setCart } = useCart()
 
   const handleAddToCart = () => {
     const newCart = [
@@ -19,8 +21,9 @@ const CartAction = ({ product }) => {
         product
       }
     ]
-
-    console.log('newCart :', newCart);
+    setCart(newCart)
+    localStorage.setItem('camping-store-cart', JSON.stringify(newCart))
+    toast.success('Item added to Cart!')
   }
 
   return (

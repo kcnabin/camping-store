@@ -19,12 +19,14 @@ import AllProducts from "./adminPages/components/products/AllProductsLayout";
 import CartPage from "./components/cart/CartPage";
 import CreateProductsForm from "./adminPages/components/products/CreateProductsForm";
 import ProductInfo from "./pages/products/ProductInfo";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   axios.defaults.baseURL = `http://localhost:3001/api`;
 
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="" element={<IndexPage />} />
