@@ -58,7 +58,7 @@ const Footer = () => {
   const style = `col-12 col-md-4 mb-4 mb-md-0`
 
   return (
-    <div className='bg-title text-white fw-semibold px-4 py-5'>
+    <div className='bg-title text-white px-4 py-5'>
       <div className="container-fluid">
         <div className="row">
           <div className={style}>

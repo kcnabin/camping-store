@@ -11,7 +11,9 @@ const UserDropdown = () => {
     setAuth('')
     localStorage.removeItem('camping-store-user')
     toast.success('user logged out')
-    navigate('/login')
+    setTimeout(() => {
+      navigate('/login')
+    }, 1000)
   }
 
   return (

@@ -94,9 +94,9 @@ const CreateProductsForm = () => {
 
       } else {
         const newProduct = await axios.post('/products/add', productObject, getTokenHeader())
-        setTimeout(() => {
-          navigate(`/product/${newProduct.data._id}`)
-        }, 2000)
+        // setTimeout(() => {
+        //   navigate(`/product/${newProduct.data._id}`)
+        // }, 2000)
       }
 
       toast.success(pId ? 'Product Updated' : 'Product Added!')
@@ -122,6 +122,10 @@ const CreateProductsForm = () => {
     setCategoryId(selectedCategory[0]._id)
   }
 
+  const handleFeatureDelete = (index) => {
+    setDescriptions(descriptions.filter(listItem => descriptions.indexOf(listItem) !== index))
+  }
+
 
   return (
     <div className={pId ? 'mx-4' : ''}>
@@ -129,7 +133,7 @@ const CreateProductsForm = () => {
         {pId ? 'Update Product' : 'Add New Products'}
       </h5>
 
-      <form onSubmit={handleAddProducts} className='my-4 px-2'>
+      <form onSubmit={handleAddProducts} className='my-4 px-2 container'>
         {
           allCategories && (
             <div className="mb-3">
@@ -251,7 +255,16 @@ const CreateProductsForm = () => {
 
           <ul>
             {
-              descriptions.map((des, i) => <li key={i}>{des}</li>)
+              descriptions.map((des, i) => {
+                return (
+                  <div key={i} className='align-center'>
+                    <li className='me-4'>{des}</li>
+                    <button className="btn btn-outline-danger" type='button' onClick={() => handleFeatureDelete(i)}>
+                      Del
+                    </button>
+                  </div>
+                )
+              })
             }
           </ul>
 

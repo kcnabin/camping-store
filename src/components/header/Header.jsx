@@ -13,11 +13,11 @@ const Header = () => {
 
   return (
     <div className='bg-title text-white py-3 px-4 d-flex justify-content-between align-items-center'>
-      <Link to='/' className='d-flex align-items-center'>
+      <Link to='/' className='d-flex align-items-center store'>
         <div style={{ width: "28px" }}>
           <img src="/icons/camp.png" alt="store logo" className='w-100' />
         </div>
-        <div className='ms-3 h6 mb-0'>
+        <div className='ms-3 h6 mb-0 store-title'>
           Camping Store
         </div>
       </Link>
