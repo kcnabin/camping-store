@@ -1,9 +1,12 @@
 import React from 'react'
 import { getImgSrc } from '../../helper/getImgSrc'
+import { Link } from 'react-router-dom'
 
 const EachProduct = ({ product }) => {
   return (
-    <div className='border p-2'>
+    <Link className='border p-2 hover-zoom'
+      to={`/products/${product._id}`}
+    >
       <div className='justify-center ratio ratio-4x3'>
         <img
           src={getImgSrc(product.photos[0])}
@@ -30,7 +33,7 @@ const EachProduct = ({ product }) => {
         </div>
 
       </div>
-    </div>
+    </Link>
   )
 }
 

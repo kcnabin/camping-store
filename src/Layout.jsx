@@ -4,6 +4,7 @@ import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import NavBar from './components/navBar/NavBar'
 
 const Layout = () => {
   return (
@@ -13,6 +14,7 @@ const Layout = () => {
         hideProgressBar
       />
       <Header />
+      <NavBar />
       <Outlet />
       <Footer />
     </>

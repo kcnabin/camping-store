@@ -16,10 +16,11 @@ import CreateCategory from "./adminPages/components/category/CreateCategory";
 import CreateProducts from "./adminPages/components/products/CreateProducts";
 import AllUsers from "./adminPages/components/users/AllUsers";
 import AllProducts from "./adminPages/components/products/AllProductsLayout";
-import CartPage from "./components/cart/CartPage";
+import CartPage from "./pages/cart/CartPage";
 import CreateProductsForm from "./adminPages/components/products/CreateProductsForm";
 import ProductInfo from "./pages/products/ProductInfo";
 import ScrollToTop from "./components/ScrollToTop";
+import ProductCategory from "./pages/productCategory/ProductCategory";
 
 const App = () => {
   axios.defaults.baseURL = `http://localhost:3001/api`;
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/products/:pId" element={<ProductInfo />} />
+          <Route path="/category/:cId" element={<ProductCategory />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

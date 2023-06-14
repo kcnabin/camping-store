@@ -3,6 +3,21 @@
   background-color: #000000;
 }
 
+.navbar {
+  background-color: #f4f2ed;
+  color: rgba(12, 11, 8, 0.75);
+  /* border-bottom: 1px solid black; */
+}
+
+.nav-link {
+  border-bottom: 3px solid #f4f2ed;
+}
+
+.nav-link:hover {
+  color: #000000;
+  border-bottom: 3px solid black;
+}
+
 a {
   color: inherit;
   text-decoration: none;

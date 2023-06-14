@@ -21,3 +21,4 @@ export const useFetchData = (path, dep1 = '', dep2 = '', dep3 = '') => {
 
   return { value, setValue };
 };
+

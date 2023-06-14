@@ -18,14 +18,12 @@ const SimilarProducts = ({ pId, cId }) => {
             {
               similarProducts.map(product => {
                 return (
-                  <Link
-                    className="col-12 col-sm-6 col-md-4 col-lg-3 p-2 hover-zoom"
+                  <div
+                    className="col-12 col-sm-6 col-md-4 col-lg-3"
                     key={product._id}
-                    to={`/products/${product._id}`}
                   >
                     <EachProduct product={product} />
-                  </Link>
-
+                  </div>
                 )
               })
             }
