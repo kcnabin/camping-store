@@ -5,26 +5,26 @@ import CartItems from './CartItems'
 import CartSummary from './CartSummary'
 
 const CartPage = () => {
-  const { cart, setCart } = useCart()
+  const { cart } = useCart()
 
   if (cart?.length >= 0) {
     return (
-      <div className='mx-4'>
-        <div className='align-center my-2'>
-          <h4 className=''>
+      <div className='mx-4 my-2'>
+        <div className='align-center flex-wrap my-2'>
+          <h4 className='me-2'>
             Your shopping cart
           </h4>
-          <span className='ms-2 text-muted'>
+          <span className='text-muted'>
             {`(${(cart?.length > 0) ? getTotalCartQuantity(cart) : 0} products)`}
           </span>
         </div>
 
         <div className="container-fluid">
           <div className="row">
-            <div className="col-12 col-md-8 ps-0">
+            <div className="col-12 col-md-8 px-0">
               <CartItems />
             </div>
-            <div className="col-12 col-md-4">
+            <div className="ps-0 ps-md-3 col-12 col-md-4 pe-0">
               <CartSummary />
             </div>
           </div>

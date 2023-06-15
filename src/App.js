@@ -21,6 +21,7 @@ import CreateProductsForm from "./adminPages/components/products/CreateProductsF
 import ProductInfo from "./pages/products/ProductInfo";
 import ScrollToTop from "./components/ScrollToTop";
 import ProductCategory from "./pages/productCategory/ProductCategory";
+import CheckOutPage from "./userPages/checkout/CheckOutPage";
 
 const App = () => {
   axios.defaults.baseURL = `http://localhost:3001/api`;
@@ -39,6 +40,12 @@ const App = () => {
           <Route path="/category/:cId" element={<ProductCategory />} />
 
           <Route path="*" element={<NotFound />} />
+        </Route>
+
+        <Route path="/checkout" element={<UserCheck />}>
+          <Route path="" element={<Layout />}>
+            <Route path="" element={<CheckOutPage />} />
+          </Route>
         </Route>
 
         <Route path="/dashboard" element={<AdminCheck />}>

@@ -12,7 +12,7 @@ import { getTotalCartQuantity } from '../../helper/getTotalCartQuantity'
 
 const Header = () => {
   const { auth } = useAuth()
-  const { cart, setCart } = useCart()
+  const { cart } = useCart()
 
   return (
     <div className='bg-title text-white py-3 px-4 d-flex justify-content-between align-items-center'>
@@ -28,7 +28,7 @@ const Header = () => {
       <div className='align-center '>
         {
           (auth?.user?.name) ? "" : (
-            <Link className='align-center d-none d-md-block' to='/login'>
+            <Link className='align-center d-none d-md-block me-3' to='/login'>
               <ProfileIcon />
               <span className='ms-2 '>
                 Sign In

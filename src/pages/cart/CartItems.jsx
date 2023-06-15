@@ -3,7 +3,7 @@ import { useCart } from '../../context/CartContext'
 import EachCartItem from './EachCartItem';
 
 const CartItems = () => {
-  const { cart, setCart } = useCart()
+  const { cart } = useCart()
 
   return (
     <div>
@@ -11,8 +11,8 @@ const CartItems = () => {
         <thead className='fw-light'>
           <tr className='table-secondary'>
             <th scope="col">Item</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Item Price</th>
+            <th scope="col" className='d-none d-sm-block'>Quantity</th>
+            <th scope="col">Price</th>
             <th scope="col">Total</th>
           </tr>
         </thead>

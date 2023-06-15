@@ -10,7 +10,6 @@ import SimilarProducts from './SimilarProducts'
 const ProductInfo = () => {
   const { pId } = useParams()
   const { value: product } = useFetchData(`/products/${pId}`, pId)
-  console.log('product :', product);
 
   if (product) {
     return (

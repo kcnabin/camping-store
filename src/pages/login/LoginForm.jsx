@@ -3,7 +3,7 @@ import axios from 'axios'
 import { handleError } from "../../helper/handleError"
 import { useAuth } from "../../context/UserContext"
 import { toast } from "react-toastify"
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
   const [email, setEmail] = useState('')
@@ -11,6 +11,7 @@ const LoginForm = () => {
 
   const { setAuth } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -23,7 +24,7 @@ const LoginForm = () => {
       setAuth(data)
 
       toast.success(`'${data.user.name}' logged in!`)
-      navigate('/')
+      navigate(location?.state?.redirectTo || '/')
 
     } catch (error) {
       handleError(error)
