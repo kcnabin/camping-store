@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 
 const EachProduct = ({ product }) => {
   return (
-    <Link className='border p-2 hover-zoom'
+    <Link className='p-2'
       to={`/products/${product._id}`}
     >
       <div className='justify-center ratio ratio-4x3'>
         <img
           src={getImgSrc(product.photos[0])}
           alt={product.name}
-          className='h-100 w-max-100 p-2 object-fit-contain'
+          className='h-100 w-max-100 object-fit-contain'
         />
       </div>
 

@@ -6,7 +6,6 @@ import EachProduct from '../products/EachProduct'
 const ProductCategory = () => {
   const { cId } = useParams()
   const { value: categoryProducts } = useFetchData(`/products/category/${cId}`, cId)
-  console.log('categoryProducts :', categoryProducts);
 
   if (categoryProducts) {
     return (
@@ -22,8 +21,8 @@ const ProductCategory = () => {
           <div className="row">
             {
               categoryProducts.map(product => (
-                <div className="col-12 col-sm-4 col-lg-3" key={product._id}>
-                  <div className="p-2">
+                <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={product._id}>
+                  <div className="hover-zoom border p-2 m-2">
                     <EachProduct product={product} />
                   </div>
                 </div>

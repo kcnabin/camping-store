@@ -1,6 +1,5 @@
-import React from 'react'
+
 import { useFetchData } from '../../hooks/useFetchData'
-import { Link } from 'react-router-dom'
 import EachProduct from './EachProduct'
 
 const SimilarProducts = ({ pId, cId }) => {
@@ -15,20 +14,21 @@ const SimilarProducts = ({ pId, cId }) => {
         </p>
         <div className='container-fluid'>
           <div className="row">
+
             {
               similarProducts.map(product => {
                 return (
-                  <div
-                    className="col-12 col-sm-6 col-md-4 col-lg-3"
-                    key={product._id}
-                  >
-                    <EachProduct product={product} />
+                  <div className="col-12 col-sm-6 col-md-3 col-lg-3" key={product._id}>
+                    <div className="hover-zoom border p-2 m-2">
+                      <EachProduct product={product} />
+                    </div>
                   </div>
                 )
               })
             }
           </div>
         </div>
+
       </>
     )
   }

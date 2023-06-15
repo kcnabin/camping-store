@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ProductIntroduction = ({ product }) => {
+
   return (
     <>
       <h4>

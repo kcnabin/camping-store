@@ -7,9 +7,12 @@ import { useAuth } from '../../context/UserContext'
 import UserDropdown from './UserDropdown'
 import LoginDropdown from './LoginDropdown'
 import CartIcon from '../../svgIcons/CartIcon'
+import { useCart } from '../../context/CartContext'
+import { getTotalCartQuantity } from '../../helper/getTotalCartQuantity'
 
 const Header = () => {
   const { auth } = useAuth()
+  const { cart, setCart } = useCart()
 
   return (
     <div className='bg-title text-white py-3 px-4 d-flex justify-content-between align-items-center'>
@@ -34,9 +37,12 @@ const Header = () => {
           )
         }
 
-        <Link className='align-center ms-4 fw-bold' to='/cart'>
+        <Link to='/cart' className='position-relative'>
           <CartIcon />
-          <span className='ms-2 d-none d-md-block'>Cart</span>
+          {/* <span className='ms-2 d-none d-md-block'>Cart</span> */}
+          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+            {(cart?.length > 0) ? getTotalCartQuantity(cart) : 0}
+          </span>
         </Link>
 
         <div className='dropdown ms-4'>
