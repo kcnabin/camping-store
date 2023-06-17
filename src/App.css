@@ -21,11 +21,19 @@
 a {
   color: inherit;
   text-decoration: none;
+  display: block;
 }
 
 .body-height,
 .full-page {
-  min-height: calc(100vh - 68px - 43px);
+  min-height: calc(100vh - 60px - 43px);
+}
+
+@media (max-width: 768px) {
+  .body-height,
+  .full-page {
+    min-height: calc(100vh - 60px);
+  }
 }
 
 .justify-center {
@@ -44,6 +52,10 @@ a {
 
 .header-bg-color {
   color: rgb(78, 77, 73);
+}
+
+.bg-gray {
+  background-color: rgb(78, 77, 73);
 }
 
 .bg-gray {
@@ -102,4 +114,14 @@ a {
 
 .font-12 {
   font-size: 12px;
+}
+
+.side-nav {
+  color: rgba(12, 11, 8, 0.75);
+  transition: all 0.2s;
+}
+
+.side-nav:hover {
+  color: black;
+  background-color: #f4f2ed;
 }

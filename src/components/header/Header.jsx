@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import MenuIcon from '../../svgIcons/MenuIcon'
 import ProfileIcon from '../../svgIcons/ProfileIcon'
 import { useAuth } from '../../context/UserContext'
@@ -9,6 +8,7 @@ import LoginDropdown from './LoginDropdown'
 import CartIcon from '../../svgIcons/CartIcon'
 import { useCart } from '../../context/CartContext'
 import { getTotalCartQuantity } from '../../helper/getTotalCartQuantity'
+import SideNav from './SideNav'
 
 const Header = () => {
   const { auth } = useAuth()
@@ -16,27 +16,27 @@ const Header = () => {
 
   return (
     <div className='bg-title text-white py-3 px-4 d-flex justify-content-between align-items-center'>
+      <div
+        className='align-center text-white d-block d-md-none btn p-0'
+        data-bs-toggle="offcanvas"
+        data-bs-target="#sideNav"
+      >
+        <MenuIcon />
+        <SideNav />
+      </div>
+
+
+
       <Link to='/' className='d-flex align-items-center store'>
         <div style={{ width: "28px" }}>
           <img src="/icons/camp.png" alt="store logo" className='w-100' />
         </div>
-        <div className='ms-3 h6 mb-0 store-title'>
+        <div className='ms-3 h6 fw-semibold mb-0 store-title'>
           Camping Store
         </div>
       </Link>
 
       <div className='align-center '>
-        {
-          (auth?.user?.name) ? "" : (
-            <Link className='align-center d-none d-md-block me-3' to='/login'>
-              <ProfileIcon />
-              <span className='ms-2 '>
-                Sign In
-              </span>
-            </Link>
-          )
-        }
-
         <Link to='/cart' className='position-relative'>
           <CartIcon />
           {/* <span className='ms-2 d-none d-md-block'>Cart</span> */}
@@ -45,27 +45,23 @@ const Header = () => {
           </span>
         </Link>
 
-        <div className='dropdown ms-4'>
+        <div className='dropdown ms-3'>
           <div
-            className='d-flex align-items-center border py-1 px-2 border-2 rounded-pill btn'
+            className='btn p-0 m-0'
             data-bs-toggle='dropdown'
           >
-            <div className='text-white me-2'>
-              <MenuIcon />
-            </div>
-
             <div className='text-white'>
               <ProfileIcon />
             </div>
-
           </div>
 
-          <div className="dropdown-menu p-0 m-0 g-0">
+          <div className="dropdown-menu w-auto p-0 m-0 g-0">
             {auth?.user
               ? (<UserDropdown />)
-              : <LoginDropdown />}
+              : (<LoginDropdown />)}
           </div>
         </div>
+
       </div>
     </div>
   )

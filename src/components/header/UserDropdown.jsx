@@ -18,9 +18,10 @@ const UserDropdown = () => {
 
   return (
     <div className='d-flex flex-column'>
-      <div className='dropdown-options'>
+      <div>
         <Link
           to={auth?.user?.isAdmin ? '/dashboard/admin' : '/dashboard/user'}
+          className='dropdown-options'
         >
           Dashboard
         </Link>
@@ -28,33 +29,37 @@ const UserDropdown = () => {
 
       {
         auth?.user?.isAdmin ? (
-          <div className='d-blocl d-sm-none'>
-            <div className='dropdown-options'>
+          <div className='d-block d-sm-none'>
+            <div>
               <Link
                 to={'/dashboard/admin/create-category'}
+                className='dropdown-options'
               >
                 Create Category
               </Link>
             </div>
-            <div className='dropdown-options'>
+            <div>
               <Link
                 to={'/dashboard/admin/create-products'}
+                className='dropdown-options'
               >
                 Create Products
               </Link>
             </div>
 
-            <div className='dropdown-options'>
+            <div>
               <Link
                 to={'/dashboard/admin/Products'}
+                className='dropdown-options'
               >
                 All Products
               </Link>
             </div>
 
-            <div className='dropdown-options'>
+            <div>
               <Link
                 to={'/dashboard/admin/users'}
+                className='dropdown-options'
               >
                 Users
               </Link>

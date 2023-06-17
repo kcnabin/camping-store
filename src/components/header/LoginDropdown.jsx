@@ -5,13 +5,13 @@ const LoginDropdown = () => {
   return (
     <div>
       <div className='dropdown-options'>
-        <Link to='/login' >
+        <Link to='/login' className='w-100 d-block'>
           Login
         </Link>
       </div>
 
       <div className='dropdown-options'>
-        <Link to='/register' >
+        <Link to='/register' className='d-block'>
           Register
         </Link>
       </div>

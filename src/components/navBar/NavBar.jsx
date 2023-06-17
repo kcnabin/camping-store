@@ -17,7 +17,7 @@ const NavBar = () => {
 
   if (categories) {
     return (
-      <nav className='navbar p-0 m-0 px-4 d-none d-sm-flex flex-wrap'>
+      <nav className='navbar p-0 m-0 px-4 d-none d-md-flex flex-wrap'>
         {
           categories.map(category => (
             <Link

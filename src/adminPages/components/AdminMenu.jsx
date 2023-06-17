@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { getPath } from '../../helper/getPath'
 
 const AdminMenu = () => {
-  const linkStyle = `h6 text-decoration-none`
+  const linkStyle = `h6 m-0 text-decoration-none`
 
   const location = useLocation()
   const path = getPath(location.pathname)
