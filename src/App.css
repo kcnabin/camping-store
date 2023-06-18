@@ -1,16 +1,21 @@
+:root {
+  --main-gray: #f4f2ed;
+}
+
 .bg-title {
   /* background-color: #3b3c36; */
   background-color: #000000;
 }
 
-.navbar {
-  background-color: #f4f2ed;
+.navbar,
+.gray {
+  background-color: var(--main-gray);
   color: rgba(12, 11, 8, 0.75);
   /* border-bottom: 1px solid black; */
 }
 
 .nav-link {
-  border-bottom: 3px solid #f4f2ed;
+  border-bottom: 3px solid var(--main-gray);
 }
 
 .nav-link:hover {
@@ -70,7 +75,7 @@ a {
 }
 
 .dropdown-options:hover {
-  background-color: #f4f2ed;
+  background-color: var(--main-gray);
 }
 
 .hover-zoom,
@@ -123,5 +128,5 @@ a {
 
 .side-nav:hover {
   color: black;
-  background-color: #f4f2ed;
+  background-color: var(--main-gray);
 }
