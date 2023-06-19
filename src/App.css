@@ -1,5 +1,6 @@
 :root {
   --main-gray: #f4f2ed;
+  --order-page-gray: #eff0f4;
 }
 
 .bg-title {
@@ -129,4 +130,8 @@ a {
 .side-nav:hover {
   color: black;
   background-color: var(--main-gray);
+}
+
+.order-page {
+  background-color: var(--order-page-gray);
 }

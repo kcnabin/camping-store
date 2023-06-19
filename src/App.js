@@ -22,6 +22,7 @@ import ProductInfo from "./pages/products/ProductInfo";
 import ScrollToTop from "./components/ScrollToTop";
 import ProductCategory from "./pages/productCategory/ProductCategory";
 import CheckOutPage from "./userPages/checkout/CheckOutPage";
+import OrdersPage from "./userPages/orders/OrdersPage";
 
 const App = () => {
   axios.defaults.baseURL = `http://localhost:3001/api`;
@@ -62,6 +63,7 @@ const App = () => {
         <Route path="/dashboard" element={<UserCheck />}>
           <Route path="user" element={<Layout />}>
             <Route path="" element={<UserPage />} />
+            <Route path="orders" element={<OrdersPage />} />
           </Route>
         </Route>
       </Routes>

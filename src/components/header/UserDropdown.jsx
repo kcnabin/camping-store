@@ -65,7 +65,16 @@ const UserDropdown = () => {
               </Link>
             </div>
           </div>
-        ) : ''
+        ) : (
+          <div>
+            <Link
+              to={'/dashboard/user/orders'}
+              className='dropdown-options'
+            >
+              Orders
+            </Link>
+          </div>
+        )
       }
 
       <Link

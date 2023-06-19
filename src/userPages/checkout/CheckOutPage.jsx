@@ -83,7 +83,7 @@ const CheckOutPage = () => {
       order.grandTotal = 0
 
       setTimeout(() => {
-        navigate('/order')
+        navigate('/dashboard/user/orders')
       }, 2000)
     } catch (error) {
       return handleError(error)

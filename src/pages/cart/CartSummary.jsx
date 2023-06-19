@@ -36,7 +36,7 @@ const CartSummary = () => {
           Standard Shipping
         </div>
         <div className='ms-2'>
-          {(shippingCost === 0) ? 'Free' : (`NRs. ${shippingCost}`)}
+          {((shippingCost === 0) || (subTotal === 0)) ? 'Free' : (`NRs. ${shippingCost}`)}
         </div>
       </div>
 
@@ -45,15 +45,17 @@ const CartSummary = () => {
           Order Total
         </div>
         <div className='ms-2 fw-bolder text-muted'>
-          NRs. {(subTotal + shippingCost).toLocaleString()}
+          NRs. {(subTotal + (subTotal === 0 ? 0 : shippingCost)).toLocaleString()}
         </div>
       </div>
 
       <div className="mt-3">
         {auth?.token ? (
-          <Link to='/checkout' state={checkOutState} className="btn btn-success w-100">
-            Proceed to Checkout
-          </Link>
+          <button className="btn btn-success w-100" disabled={subTotal === 0}>
+            <Link to='/checkout' state={checkOutState}>
+              {subTotal === 0 ? 'Add items to Cart' : 'Proceed to Checkout'}
+            </Link>
+          </button>
         ) : (
           <Link to='/login' className="btn btn-primary w-100" state={{ redirectTo: `/cart` }}>
             Login
