@@ -23,6 +23,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import ProductCategory from "./pages/productCategory/ProductCategory";
 import CheckOutPage from "./userPages/checkout/CheckOutPage";
 import OrdersPage from "./userPages/orders/OrdersPage";
+import OrdersDashboard from "./adminPages/components/orders/OrdersDashboard";
+import LayoutTwo from "./LayoutTwo";
 
 const App = () => {
   axios.defaults.baseURL = `http://localhost:3001/api`;
@@ -50,13 +52,14 @@ const App = () => {
         </Route>
 
         <Route path="/dashboard" element={<AdminCheck />}>
-          <Route path="admin" element={<Layout />}>
+          <Route path="admin" element={<LayoutTwo />}>
             <Route path="" element={<AdminPage />} />
             <Route path="create-category" element={<CreateCategory />} />
             <Route path="create-products" element={<CreateProducts />} />
             <Route path="products" element={<AllProducts />} />
-            <Route path="products/edit/:pId" element={<CreateProductsForm />} />
-            <Route path="users" element={<AllUsers />} />
+            <Route path="products/edit/:pId" element={<CreateProducts />} />
+            <Route path="customers" element={<AllUsers />} />
+            <Route path="orders" element={<OrdersDashboard />} />
           </Route>
         </Route>
 

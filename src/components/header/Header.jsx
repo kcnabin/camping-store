@@ -39,7 +39,6 @@ const Header = () => {
       <div className='align-center '>
         <Link to='/cart' className='position-relative'>
           <CartIcon />
-          {/* <span className='ms-2 d-none d-md-block'>Cart</span> */}
           <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
             {(cart?.length > 0) ? getTotalCartQuantity(cart) : 0}
           </span>

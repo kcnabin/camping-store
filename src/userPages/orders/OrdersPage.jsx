@@ -5,6 +5,7 @@ import EachOrderItem from './EachOrderItem';
 
 const OrdersPage = () => {
   const { value: orders } = useFetchData('/user-orders')
+
   if (orders) {
     return (
       <div className='container'>
@@ -18,7 +19,7 @@ const OrdersPage = () => {
               return (
                 <div
                   key={order._id}
-                  className='mb-4 border border-secondary shadow p-3 hover-zoom'
+                  className='mb-4 border border-secondary shadow p-3'
                 >
                   <div className="align-center fw-light">
                     <div className=''>Order</div>

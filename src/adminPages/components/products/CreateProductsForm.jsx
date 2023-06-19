@@ -89,7 +89,7 @@ const CreateProductsForm = () => {
       if (pId) {
         await axios.put(`/products/${product._id}`, productObject, getTokenHeader())
         setTimeout(() => {
-          navigate(`/product/${product._id}`)
+          navigate(`/products/${product._id}`)
         }, 2000)
 
       } else {

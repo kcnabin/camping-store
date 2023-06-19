@@ -132,6 +132,7 @@ a {
   background-color: var(--main-gray);
 }
 
-.order-page {
+.order-page,
+.admin-menu {
   background-color: var(--order-page-gray);
 }
