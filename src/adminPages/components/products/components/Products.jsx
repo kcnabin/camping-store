@@ -31,7 +31,7 @@ const Products = () => {
               {
                 productsData.products.map((product, i) => {
                   return (
-                    <div className="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-4" key={product._id + i}>
+                    <div className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" key={product._id + i}>
                       <EachProductLayout product={product} />
                     </div>
                   )

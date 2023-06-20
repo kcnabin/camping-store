@@ -15,6 +15,10 @@
   /* border-bottom: 1px solid black; */
 }
 
+.semi-gray {
+  background-color: var(--order-page-gray);
+}
+
 .nav-link {
   border-bottom: 3px solid var(--main-gray);
 }

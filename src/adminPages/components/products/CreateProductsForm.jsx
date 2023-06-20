@@ -129,7 +129,7 @@ const CreateProductsForm = () => {
 
   return (
     <div className={pId ? 'mx-4' : ''}>
-      <h5 className={pId ? 'mt-3 text-center' : "text-center"}>
+      <h5 className="text-center">
         {pId ? 'Update Product' : 'Add New Products'}
       </h5>
 

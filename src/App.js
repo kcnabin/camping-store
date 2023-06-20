@@ -17,7 +17,6 @@ import CreateProducts from "./adminPages/components/products/CreateProducts";
 import AllUsers from "./adminPages/components/users/AllUsers";
 import AllProducts from "./adminPages/components/products/AllProductsLayout";
 import CartPage from "./pages/cart/CartPage";
-import CreateProductsForm from "./adminPages/components/products/CreateProductsForm";
 import ProductInfo from "./pages/products/ProductInfo";
 import ScrollToTop from "./components/ScrollToTop";
 import ProductCategory from "./pages/productCategory/ProductCategory";

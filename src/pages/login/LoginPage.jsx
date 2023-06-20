@@ -6,7 +6,7 @@ const LoginPage = () => {
 
   return (
     <Page100Vh>
-      <div>
+      <div className="card px-4 py-5 shadow rounded-4">
         <p className="h4 text-center mb-4">
           Login
         </p>
@@ -20,7 +20,7 @@ const LoginPage = () => {
 
           <Link
             to='/register'
-            className="btn btn-secondary py-1"
+            className="py-1 text-primary fw-bold"
           >
             Register
           </Link>

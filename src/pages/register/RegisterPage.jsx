@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const RegisterPage = () => {
   return (
     <Page100Vh>
-      <div className=''>
+      <div className="card px-3 py-4 shadow rounded-4">
         <p className="h4 text-center mb-4">
           Register
         </p>
@@ -19,7 +19,7 @@ const RegisterPage = () => {
 
           <Link
             to='/login'
-            className="btn btn-success py-1"
+            className="text-success fw-bold py-1"
           >
             Login
           </Link>

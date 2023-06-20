@@ -6,40 +6,40 @@ const EachProductLayout = ({ product }) => {
   return (
     <div>
       <div className="card shadow my-3 hover-zoom">
-        <div className='w-100' style={{ height: "200px" }}>
+        <div className='w-100' style={{ height: "150px" }}>
           <img
             src={getImgSrc(product.photos[0])}
             style={{ height: "100%" }}
             className="card-img-top p-2 object-fit-scale"
-
             alt={product.name}
           />
         </div>
         <div className="card-body">
-          <h5 className="card-title">
+          <span className="card-title text-muted">
             {product.name}
-          </h5>
-          <h6>
+          </span>
+          <p className='mb-2'>
             {product.category}
-          </h6>
-          <h6>
-            Price: NRs {product.price.toLocaleString()}
-          </h6>
-          <p className="card-text fw-lighter lh-sm mt-2">
-            {product.descriptions[0].substring(0, 40)}...
           </p>
-          <div className='flex-center'>
-            <Link className="btn btn-secondary me-2 mt-2"
+          <span className='text-success'>
+            NRs {product.price.toLocaleString()}
+          </span>
+          {/* <p className="card-text fw-lighter lh-sm mt-2">
+            {product.descriptions[0].substring(0, 40)}...
+          </p> */}
+
+          <div className='flex-center font-12'>
+            <Link className="btn btn-secondary me-2 mt-2 font-12"
               to={`/dashboard/admin/products/edit/${product._id}`}
             >
               Edit
             </Link>
 
-            <button className="btn btn-danger me-2 mt-2">
+            <button className="btn btn-danger me-2 mt-2 font-12">
               Delete
             </button>
 
-            <Link className="btn btn-dark mt-2"
+            <Link className="btn btn-dark mt-2 font-12"
               to={`/products/${product._id}`}
             >
               View
