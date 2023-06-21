@@ -140,3 +140,7 @@ a {
 .admin-menu {
   background-color: var(--order-page-gray);
 }
+
+.order-table {
+  overflow: scroll;
+}

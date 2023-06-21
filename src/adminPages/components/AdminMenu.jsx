@@ -9,6 +9,10 @@ import CircleAddIcon from '../../svgIcons/CircleAddIcon'
 const AdminMenu = () => {
   const location = useLocation()
 
+  if (location.pathname.includes('/dashboard/admin/orders')) {
+    location.pathname = '/dashboard/admin/orders'
+  }
+
   const getStyle = (sentPath) => {
     let style = 'align-center shadow rounded-3 py-2 px-3 my-4 hover-zoom'
 
