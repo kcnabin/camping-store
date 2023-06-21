@@ -1,39 +1,54 @@
 import React, { useState } from 'react'
 import LeftArrowIcon from '../../../svgIcons/LeftArrowIcon'
-import CalendarIcon from '../../../svgIcons/CalendarIcon'
 import { Link } from 'react-router-dom'
-import ProfileIcon from '../../../svgIcons/ProfileIcon'
-import LocationIcon from '../../../svgIcons/LocationIcon'
+import OrderDateAndNumber from './components/OrderDateAndId'
+import { handleError } from '../../../helper/handleError'
+import axios from 'axios'
+import { getTokenHeader } from '../../../helper/getTokenHeader'
+import { toast } from 'react-toastify'
+import PaymentInfo from './components/PaymentInfo'
+import ShippingAndProductInfo from './components/ShippingAndProductInfo'
 
-const OrderDetails = ({ order }) => {
+const OrderDetails = ({ order, orders, setOrders }) => {
   const [status, setStatus] = useState(order.status)
-  const { shippingInfo } = order
 
-  const allStatus = ["processing", "accepted", "shipped", "delivered", "cancelled", "declined"]
+  const allStatus = ["processing", "accepted", "shipped", "delivered", "declined"]
 
+  const changeOrderStatus = async () => {
+    const url = `/order/${order._id}`
+
+    try {
+      await axios.put(url, { status }, getTokenHeader())
+      toast.success('Order status changed!')
+      setOrders(orders.map(eachOrder => {
+        if (eachOrder._id.toString() !== order._id.toString()) {
+          return eachOrder
+        }
+        return ({
+          ...order,
+          status
+        })
+      }))
+
+    } catch (error) {
+      return handleError(error)
+    }
+  }
 
   return (
     <div>
       <div className='align-center mb-2'>
-        <Link to='/dashboard/admin/orders' className='btn m-0 p-1 me-1'>
+        <Link to='/dashboard/admin/orders' className='btn m-0 p-1 ps-0 me-1'>
           <LeftArrowIcon />
         </Link>
-        <p className="h5 m-0">Order Details</p>
+        <p className="h5 m-0">
+          Order Details
+        </p>
       </div>
 
       <div className='d-flex flex-column flex-sm-row justify-content-between border rounded-3 p-3 '>
-        <div className=''>
-          <div className='align-center'>
-            <div className='me-3'>
-              <CalendarIcon />
-            </div>
-            <span className="fw-bold">
-              {(new Date(order.createdAt)).toLocaleDateString()}
-            </span>
-          </div>
-          <p className="mt-2 mb-0 text-muted">
-            #Id   {order._id}
-          </p>
+        <div>
+          <OrderDateAndNumber date={order.createdAt} id={order._id} />
         </div>
 
         <div className='align-center ms-sm-2 mt-3 mt-sm-0'>
@@ -57,7 +72,10 @@ const OrderDetails = ({ order }) => {
           </div>
 
           <div className='ms-3'>
-            <button className='btn btn-outline-success' disabled={order.status === 'delivered'}>
+            <button
+              className='btn btn-outline-success'
+              onClick={() => changeOrderStatus()}
+            >
               Save
             </button>
           </div>
@@ -65,50 +83,12 @@ const OrderDetails = ({ order }) => {
 
       </div>
 
-      <div className="container-fluid my-3">
-        <div className="row">
-          <div className='col-12 col-sm-6 d-flex border px-3 py-2 rounded-3'>
-            <div>
-              <ProfileIcon />
-            </div>
-            <div className='ms-3 text-muted'>
-              <div className='fw-bold'>Customer</div>
-              <div>
-                {shippingInfo.fullName}
-              </div>
-              <div>
-                {shippingInfo.email}
-              </div>
-              <div>
-                {shippingInfo.phoneNum}
-              </div>
-            </div>
-          </div>
+      <ShippingAndProductInfo order={order} />
 
-          <div className='col-12 col-sm-6 px-0 ps-sm-3 pt-3 pt-sm-0'>
-            <div className="d-flex border rounded-3 px-3 py-2">
-              <div className='text-primary'>
-                <LocationIcon />
-              </div>
-              <div className='ms-3 text-muted'>
-                <div className='fw-bold'>Deliver To</div>
-                <div>
-                  Street: {shippingInfo.address.street}
-                </div>
-                <div>
-                  City: {shippingInfo.address.city}
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className='text-muted border p-3 mt-2'>
+        <PaymentInfo />
       </div>
-
-      <div className='d-flex justify-content-between my-3'>
-
-      </div>
-    </div>
+    </div >
   )
 }
 

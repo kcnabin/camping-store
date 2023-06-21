@@ -11,7 +11,6 @@ import AboutPage from "./pages/about/AboutPage";
 import AdminCheck from "./adminPages/AdminCheck";
 import AdminPage from "./adminPages/AdminPage";
 import UserCheck from "./userPages/UserCheck";
-import UserPage from "./userPages/UserPage";
 import CreateCategory from "./adminPages/components/category/CreateCategory";
 import CreateProducts from "./adminPages/components/products/CreateProducts";
 import AllUsers from "./adminPages/components/users/AllUsers";
@@ -24,6 +23,8 @@ import CheckOutPage from "./userPages/checkout/CheckOutPage";
 import OrdersPage from "./userPages/orders/OrdersPage";
 import OrdersDashboard from "./adminPages/components/orders/OrdersDashboard";
 import LayoutTwo from "./LayoutTwo";
+import UserDashboard from "./userPages/UserDashboard";
+import OrderDetailLayout from "./userPages/orders/OrderDetailLayout";
 
 const App = () => {
   axios.defaults.baseURL = `http://localhost:3001/api`;
@@ -65,8 +66,9 @@ const App = () => {
 
         <Route path="/dashboard" element={<UserCheck />}>
           <Route path="user" element={<Layout />}>
-            <Route path="" element={<UserPage />} />
+            <Route path="" element={<UserDashboard />} />
             <Route path="orders" element={<OrdersPage />} />
+            <Route path="orders/:orderId" element={<OrderDetailLayout />} />
           </Route>
         </Route>
       </Routes>

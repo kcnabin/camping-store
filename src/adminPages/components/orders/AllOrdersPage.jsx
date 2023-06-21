@@ -5,21 +5,15 @@ import { useFetchData } from '../../../hooks/useFetchData'
 import OrderDetails from './OrderDetails'
 
 const AllOrdersPage = () => {
-  const { value: allOrders } = useFetchData('/order')
-  console.log('allOrders :', allOrders);
-
+  const { value: allOrders, setValue: setAllOrders } = useFetchData('/order')
   const [showSingleOrder, setShowSingleOrder] = useState(false)
-  console.log('showSingleOrder :', showSingleOrder);
-
   const { orderId } = useParams()
-  console.log('orderId :', orderId);
 
   if (showSingleOrder && orderId && allOrders) {
     const singleOrder = allOrders.filter(order => order._id.toString() === orderId)[0]
-    console.log('singleOrder :', singleOrder);
 
     return (
-      <OrderDetails order={singleOrder} />
+      <OrderDetails order={singleOrder} orders={allOrders} setOrders={setAllOrders} />
     )
   }
 
@@ -57,7 +51,7 @@ const AllOrdersPage = () => {
                       <td>{order.grandTotal.toLocaleString()}</td>
 
                       <td className='w-auto fw-bold'>
-                        <span className={order.status === 'rejected' ? 'text-danger' : 'text-success'}>
+                        <span>
                           {order.status}
                         </span>
                       </td>
