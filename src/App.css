@@ -144,3 +144,23 @@ a {
 .order-table {
   overflow: scroll;
 }
+
+.cover-text {
+  background-color: rgba(0, 0, 0, 0.15);
+  transition: all 0.5s;
+}
+
+@media (min-width: 768px) {
+  .cover-text {
+    bottom: 50%;
+  }
+}
+
+.cover-text:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.index-card {
+  position: absolute;
+  bottom: 10px;
+}

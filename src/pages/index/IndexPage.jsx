@@ -1,11 +1,14 @@
-
+import React from 'react'
+import CoverImage from './CoverImage'
+import OfferCards from './OfferCards'
 
 const IndexPage = () => {
 
   return (
-    <>
-      <div>IndexPage</div>
-    </>
+    <div>
+      <CoverImage />
+      <OfferCards />
+    </div>
   )
 }
 
