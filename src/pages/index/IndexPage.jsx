@@ -1,6 +1,7 @@
 import React from 'react'
 import CoverImage from './CoverImage'
 import OfferCards from './OfferCards'
+import RandomProducts from './RandomProducts'
 
 const IndexPage = () => {
 
@@ -8,6 +9,7 @@ const IndexPage = () => {
     <div>
       <CoverImage />
       <OfferCards />
+      <RandomProducts />
     </div>
   )
 }

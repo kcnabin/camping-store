@@ -7,30 +7,31 @@ const OfferCards = () => {
       title: 'Tents Deals',
       info: 'upto 30% off',
       photo: "/photos/camping-tent-offers.png",
-      link: ""
+      link: "/category/64846bfbf95c2bc48cd8d5cf"
     },
     {
       title: 'Footwear Deals',
       info: 'upto 20% off',
       photo: "/photos/hiking-shoes-offers.png",
-      link: ""
+      link: "/category/64846c08f95c2bc48cd8d5d5"
     },
     {
       title: 'Backpacks Deals',
       info: 'upto 25% off',
       photo: "/photos/bagpacks-offers.png",
-      link: ""
+      link: "/category/64846bf8f95c2bc48cd8d5cc"
     },
     {
       title: 'Sleeping Bag Deals',
       info: 'upto 15% off',
       photo: "/photos/sleeping-bag-offers.png",
-      link: ""
+      link: "/category/64846c03f95c2bc48cd8d5d2"
     }
   ]
 
   return (
     <div className='m-3'>
+      <h5 className='ps-3 mb-2'>Latest Offers</h5>
       <div className="container-fluid">
         <div className="row">
           <div className="col-6 col-sm-4 col-md-3">

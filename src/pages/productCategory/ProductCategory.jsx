@@ -2,6 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useFetchData } from '../../hooks/useFetchData'
 import EachProduct from '../products/EachProduct'
+import ProductsLayout from './ProductsLayout'
 
 const ProductCategory = () => {
   const { cId } = useParams()
@@ -17,7 +18,9 @@ const ProductCategory = () => {
           </span>
         </div>
 
-        <div className="container-fluid">
+        <ProductsLayout products={categoryProducts} />
+
+        {/* <div className="container-fluid">
           <div className="row">
             {
               categoryProducts.map(product => (
@@ -29,7 +32,7 @@ const ProductCategory = () => {
               ))
             }
           </div>
-        </div>
+        </div> */}
       </div>
     )
   }

@@ -11,7 +11,7 @@ const EachProduct = ({ product }) => {
         <img
           src={getImgSrc(product.photos[0])}
           alt={product.name}
-          className='h-100 w-max-100 object-fit-contain'
+          className='h-100 w-max-100 object-fit-contain p-3 p-sm-0'
         />
       </div>
 
