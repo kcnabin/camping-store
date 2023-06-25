@@ -6,6 +6,7 @@ import ProductPriceAndDiscount from './ProductPriceAndDiscount'
 import ProductIntroduction from './ProductIntroduction'
 import CartAction from './CartAction'
 import SimilarProducts from './SimilarProducts'
+import LoadingIcon from '../../svgIcons/LoadingIcon'
 
 const ProductInfo = () => {
   const { pId } = useParams()
@@ -62,7 +63,7 @@ const ProductInfo = () => {
     )
   }
 
-  return (<h4>Loading Product Details....</h4>)
+  return (<LoadingIcon />)
 }
 
 export default ProductInfo

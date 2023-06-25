@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useFetchData } from '../../../hooks/useFetchData'
 
 import OrderDetails from './OrderDetails'
+import LoadingIcon from '../../../svgIcons/LoadingIcon'
 
 const AllOrdersPage = () => {
   const { value: allOrders, setValue: setAllOrders } = useFetchData('/order')
@@ -77,7 +78,7 @@ const AllOrdersPage = () => {
     )
   }
 
-  return (<p>Loading All Orders...</p>)
+  return <LoadingIcon />
 }
 
 export default AllOrdersPage

@@ -32,7 +32,7 @@ const NavBar = () => {
       </nav>
     )
   }
-  return 'Loading Navigation Bar'
+  return ''
 }
 
 export default NavBar 

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useFetchData } from '../../hooks/useFetchData'
-import EachProduct from '../products/EachProduct'
 import ProductsLayout from './ProductsLayout'
+import LoadingIcon from '../../svgIcons/LoadingIcon'
 
 const ProductCategory = () => {
   const { cId } = useParams()
@@ -10,34 +10,28 @@ const ProductCategory = () => {
 
   if (categoryProducts) {
     return (
-      <div className='mx-4'>
+      <div className='mx-4 mb-4'>
         <div className='align-center my-2'>
-          <h4 className=''>{categoryProducts[0].category}</h4>
+          <h4 className=''>
+            {
+              (categoryProducts.length > 0)
+                ? categoryProducts[0].category
+                : 'No Items in Category'
+            }
+          </h4>
           <span className='ms-2 text-muted'>
             {`(${categoryProducts.length} products)`}
           </span>
         </div>
 
         <ProductsLayout products={categoryProducts} />
-
-        {/* <div className="container-fluid">
-          <div className="row">
-            {
-              categoryProducts.map(product => (
-                <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={product._id}>
-                  <div className="hover-zoom border p-2 m-2">
-                    <EachProduct product={product} />
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </div> */}
       </div>
     )
   }
 
-  return (<p>Loading Category Products...</p>)
+  return (
+    <LoadingIcon />
+  )
 }
 
 export default ProductCategory

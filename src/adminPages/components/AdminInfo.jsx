@@ -1,4 +1,5 @@
 import { useFetchData } from '../../hooks/useFetchData'
+import LoadingIcon from '../../svgIcons/LoadingIcon'
 
 const AdminInfo = () => {
   const { value: user } = useFetchData('/user-info')
@@ -24,7 +25,7 @@ const AdminInfo = () => {
     )
   }
 
-  return <h4>Loading info about admin...</h4>
+  return <LoadingIcon />
 }
 
 export default AdminInfo

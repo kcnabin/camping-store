@@ -1,23 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useFetchData } from '../../hooks/useFetchData'
 import ProductsLayout from '../productCategory/ProductsLayout'
 import { handleError } from '../../helper/handleError'
 import axios from 'axios'
+import LoadingIcon from '../../svgIcons/LoadingIcon'
 
 const RandomProducts = () => {
   const quantity = 8
   const { value: randomProducts, setValue: setRandomProducts } = useFetchData(`/products/random/${quantity}`)
-  console.log('randomProducts :', randomProducts);
+  const [loading, setLoading] = useState(false)
 
   const loadMore = async () => {
+    setLoading(true)
     try {
       const { data } = await axios.get('/products/random/6')
-      console.log('data :', data);
       setRandomProducts([...randomProducts, ...data])
-
     } catch (error) {
       return handleError(error)
+    } finally {
+      setLoading(false)
     }
+  }
+
+  if (!randomProducts) {
+    return (
+      <div className="p-3">
+        <LoadingIcon />
+      </div>
+    )
   }
 
   return (
@@ -30,14 +40,19 @@ const RandomProducts = () => {
         randomProducts && <ProductsLayout products={randomProducts} />
       }
 
-      <div className='ms-3 mt-3'>
-        <button
-          className="btn btn-outline-success"
-          onClick={() => loadMore()}
-        >
-          Load More
-        </button>
-      </div>
+      {loading
+        ? <LoadingIcon />
+        : (
+          <div className='ms-3 my-3'>
+            <button
+              className="btn btn-outline-success"
+              onClick={() => loadMore()}
+              disabled={loading}
+            >
+              Load More
+            </button>
+          </div>
+        )}
 
     </div>
   )

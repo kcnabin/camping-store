@@ -5,12 +5,15 @@ import { useFetchData } from '../../../hooks/useFetchData'
 import AllCategories from './AllCategories'
 import { getTokenHeader } from '../../../helper/getTokenHeader'
 import { toast } from 'react-toastify'
+import LoadingIcon from '../../../svgIcons/LoadingIcon'
 
 const CreateCategoryForm = () => {
   const [category, setCategory] = useState('')
   const { value: allCategories, setValue: setAllCategories } = useFetchData('/category/all')
+  const [loading, setLoading] = useState(false)
 
   const handleNewCategory = async (e) => {
+    setLoading(true)
     e.preventDefault()
 
     try {
@@ -27,6 +30,9 @@ const CreateCategoryForm = () => {
 
     } catch (error) {
       return handleError(error)
+
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -42,15 +48,18 @@ const CreateCategoryForm = () => {
             onChange={e => setCategory(e.target.value)}
             className='form-control me-3'
           />
-          <button className="btn btn-primary" type='submit'>
-            Add
+          <button className="btn btn-primary" type='submit' disabled={loading}>
+            {
+              loading ? 'Adding...' : 'Add'
+            }
           </button>
         </span>
       </form>
 
-      {allCategories && (
-        <AllCategories categories={allCategories} setCategories={setAllCategories} />
-      )}
+      {allCategories
+        ? (<AllCategories categories={allCategories} setCategories={setAllCategories} />)
+        : <LoadingIcon />
+      }
     </div>
   )
 }

@@ -11,10 +11,12 @@ import ShippingAndProductInfo from './components/ShippingAndProductInfo'
 
 const OrderDetails = ({ order, orders, setOrders }) => {
   const [status, setStatus] = useState(order.status)
+  const [changingStatus, setChangingStatus] = useState(false)
 
   const allStatus = ["processing", "accepted", "shipped", "delivered", "declined"]
 
   const changeOrderStatus = async () => {
+    setChangingStatus(true)
     const url = `/order/${order._id}`
 
     try {
@@ -32,6 +34,9 @@ const OrderDetails = ({ order, orders, setOrders }) => {
 
     } catch (error) {
       return handleError(error)
+
+    } finally {
+      setChangingStatus(false)
     }
   }
 
@@ -75,8 +80,9 @@ const OrderDetails = ({ order, orders, setOrders }) => {
             <button
               className='btn btn-outline-success'
               onClick={() => changeOrderStatus()}
+              disabled={changingStatus}
             >
-              Save
+              {changingStatus ? 'Saving...' : 'Save'}
             </button>
           </div>
         </div>
