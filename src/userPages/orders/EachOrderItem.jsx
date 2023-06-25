@@ -16,7 +16,6 @@ const EachOrderItem = ({ item, order }) => {
         <div className='text-muted'>
           <p className='h6'>{item.product.name}</p>
           <p>Quantity: {item.quantity}</p>
-          <span>Status: {order.status}</span>
         </div>
       </div>
     </>

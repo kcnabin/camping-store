@@ -15,7 +15,7 @@ const CheckOutPage = () => {
   const [fullName, setFullName] = useState('')
   const [streetAddress, setStreetAddress] = useState('')
   const [city, setCity] = useState('')
-  const [payment, setPayment] = useState('')
+  const [payment, setPayment] = useState('cashOnDelivery')
 
   const { setCart } = useCart()
   const navigate = useNavigate()
@@ -74,16 +74,14 @@ const CheckOutPage = () => {
     }
 
     try {
-      const { data } = await axios.post('/order', orderObject, getTokenHeader())
-      console.log('data :', data);
-
+      const { data: newOrder } = await axios.post('/order', orderObject, getTokenHeader())
       toast.success('Order placed successfully!')
       clearCart()
       clearCheckOutForm()
       order.grandTotal = 0
 
       setTimeout(() => {
-        navigate('/dashboard/user/orders')
+        navigate(`/dashboard/user/orders/${newOrder._id}`)
       }, 2000)
     } catch (error) {
       return handleError(error)
@@ -129,6 +127,7 @@ const CheckOutPage = () => {
               value="cashOnDelivery"
               id="cashOnDelivery"
               onChange={handlePayment}
+              checked
             />
 
             <label

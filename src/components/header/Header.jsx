@@ -28,7 +28,7 @@ const Header = () => {
 
 
       <Link to='/' className='d-flex align-items-center store'>
-        <div style={{ width: "28px" }}>
+        <div style={{ width: "28px" }} className='store-icon'>
           <img src="/icons/camp.png" alt="store logo" className='w-100' />
         </div>
         <div className='ms-3 h6 fw-semibold mb-0 store-title'>

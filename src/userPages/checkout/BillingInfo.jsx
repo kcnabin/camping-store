@@ -8,10 +8,14 @@ const BillingInfo = ({ actions }) => {
 
   useEffect(() => {
     if (userInfo) {
+      console.log('userInfo :', userInfo);
       setEmail(userInfo.email)
       setFullName(userInfo.name)
+      setPhoneNum(userInfo.phoneNum)
+      setStreetAddress(userInfo.address.street)
+      setCity(userInfo.address.city)
     }
-  }, [userInfo, setEmail, setFullName])
+  }, [userInfo, setEmail, setFullName, setPhoneNum, setStreetAddress, setCity])
 
   return (
     <div>

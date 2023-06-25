@@ -2,8 +2,10 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import GridIcon from '../svgIcons/GridIcon'
 import OrderIcon from '../svgIcons/OrderIcon'
+import { useAuth } from '../context/UserContext'
 
 const UserMenu = () => {
+  const { auth } = useAuth()
   const location = useLocation()
 
   if (location.pathname.includes('/dashboard/user/orders')) {
@@ -22,6 +24,10 @@ const UserMenu = () => {
   return (
     <div>
       <div className='py-2 px-4 admin-menu border-md-end' style={{ width: "220px" }}>
+        <h6 className='ps-3 mt-2 d-none d-md-block'>
+          Hello, {auth?.user?.name}!
+        </h6>
+
         <Link to='/dashboard/user' className={getStyle('/dashboard/user')}>
           <GridIcon />
           <p className='m-0 ms-2 fs-6'>

@@ -1,8 +1,9 @@
-import React from 'react'
+import UserInformation from "../adminPages/components/UserInformation"
+
 
 const UserInfo = () => {
   return (
-    <div>UserInfo</div>
+    <UserInformation />
   )
 }
 

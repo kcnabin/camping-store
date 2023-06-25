@@ -5,8 +5,10 @@ import ProductIcon from '../../svgIcons/ProductIcon'
 import OrderIcon from '../../svgIcons/OrderIcon'
 import PeopleIcon from '../../svgIcons/PeopleIcon'
 import CircleAddIcon from '../../svgIcons/CircleAddIcon'
+import { useAuth } from '../../context/UserContext'
 
 const AdminMenu = () => {
+  const { auth } = useAuth()
   const location = useLocation()
 
   if (location.pathname.includes('/dashboard/admin/orders')) {
@@ -24,9 +26,9 @@ const AdminMenu = () => {
 
   return (
     <div className='py-2 px-4 admin-menu border-md-end' style={{ width: "220px" }}>
-      <h5 className='ps-3 mt-2 d-none d-md-block'>
-        Hello Admin!
-      </h5>
+      <h6 className='ps-3 mt-2 d-none d-md-block'>
+        Hello, {auth?.user?.name}!
+      </h6>
 
 
       <Link to='/dashboard/admin' className={getStyle('/dashboard/admin')}>

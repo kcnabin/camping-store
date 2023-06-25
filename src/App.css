@@ -105,7 +105,8 @@ a {
 }
 
 @media (max-width: 360px) {
-  .store-title {
+  .store-title,
+  .store-icon {
     display: none;
   }
 }
