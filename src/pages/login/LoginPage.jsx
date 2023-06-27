@@ -6,14 +6,16 @@ const LoginPage = () => {
 
   return (
     <Page100Vh>
-      <div className="card px-4 py-5 shadow rounded-4">
-        <p className="h4 text-center mb-4">
+      <div className="card p-4 shadow rounded-4 mx-4">
+        <p className="h4 text-center">
           Login
         </p>
 
-        <LoginForm />
+        <div className="my-5">
+          <LoginForm />
+        </div>
 
-        <div className="mt-4 d-sm-flex align-items-center">
+        <div className="d-flex align-items-center">
           <span className="fw-bold me-2">
             Don't have an account ?
           </span>

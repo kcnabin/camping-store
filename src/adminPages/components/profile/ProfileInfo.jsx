@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import PasswordChangeForm from './PasswordChangeForm'
 
 const ProfileInfo = ({ user, setEditProfile }) => {
+  const [passwordPage, setPasswordPage] = useState(false)
+
+  if (passwordPage) {
+    return (<PasswordChangeForm setPasswordPage={setPasswordPage} email={user.email} />)
+  }
+
   return (
     <div>
       <h4 className="text-center">
@@ -38,8 +45,12 @@ const ProfileInfo = ({ user, setEditProfile }) => {
       </div>
 
       <div>
-        <button className="btn btn-secondary" onClick={() => setEditProfile(true)}>
-          Edit Profile
+        <button className="btn btn-secondary me-2 mt-1" onClick={() => setEditProfile(true)}>
+          Update Profile
+        </button>
+
+        <button className="btn btn-primary mt-1" onClick={() => setPasswordPage(true)}>
+          Change Password
         </button>
       </div>
     </div>

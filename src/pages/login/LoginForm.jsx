@@ -4,10 +4,13 @@ import { handleError } from "../../helper/handleError"
 import { useAuth } from "../../context/UserContext"
 import { toast } from "react-toastify"
 import { useLocation, useNavigate } from 'react-router-dom'
+import HideIcon from "../../svgIcons/HideIcon"
+import VisibleIcon from "../../svgIcons/VisibleIcon"
 
 const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
 
   const { setAuth } = useAuth()
   const navigate = useNavigate()
@@ -43,6 +46,7 @@ const LoginForm = () => {
           value={email}
           onChange={e => setEmail(e.target.value)}
           id='uEmail'
+          placeholder="Your Email Id"
         />
       </div>
 
@@ -50,18 +54,30 @@ const LoginForm = () => {
         <label htmlFor="uPassword" className="form-label">
           Password
         </label>
-        <input
-          type="password"
-          className="form-control"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          id='uPassword'
-        />
+        <div className="input-group">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            className='form-control'
+            placeholder='Your password'
+            id='uPassword'
+          />
+          <span className="input-group-text">
+            <button
+              className="btn p-0 m-0"
+              type='button'
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <HideIcon /> : <VisibleIcon />}
+            </button>
+          </span>
+        </div>
       </div>
 
       <button
         type="submit"
-        className="btn btn-success"
+        className="btn btn-success mt-2"
       >
         Login
       </button>

@@ -36,14 +36,7 @@ a {
 
 .body-height,
 .full-page {
-  min-height: calc(100vh - 60px - 43px);
-}
-
-@media (max-width: 768px) {
-  .body-height,
-  .full-page {
-    min-height: calc(100vh - 60px);
-  }
+  min-height: calc(100vh - 60px);
 }
 
 .justify-center {

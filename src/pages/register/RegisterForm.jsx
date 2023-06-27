@@ -3,12 +3,15 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { handleError } from '../../helper/handleError'
+import HideIcon from '../../svgIcons/HideIcon'
+import VisibleIcon from '../../svgIcons/VisibleIcon'
 
 
 const RegisterForm = () => {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
 
   const navigate = useNavigate()
 
@@ -46,10 +49,7 @@ const RegisterForm = () => {
   return (
     <form onSubmit={registerUser}>
 
-      <div className="mb-3">
-        <label htmlFor="fullname" className="form-label">
-          Full Name
-        </label>
+      <div className="mb-4">
         <input
           type="text"
           className="form-control"
@@ -57,13 +57,11 @@ const RegisterForm = () => {
           value={fullName}
           onChange={e => setFullName(e.target.value)}
           required
+          placeholder='Full Name'
         />
       </div>
 
-      <div className="mb-3">
-        <label htmlFor="email" className="form-label">
-          Email
-        </label>
+      <div className="mb-4">
         <input
           type="email"
           className="form-control"
@@ -71,21 +69,27 @@ const RegisterForm = () => {
           value={email}
           onChange={e => setEmail(e.target.value)}
           required
+          placeholder='Email'
         />
       </div>
 
-      <div className="mb-3">
-        <label htmlFor="password" className="form-label">
-          Password
-        </label>
+      <div className="input-group mb-4">
         <input
-          type="password"
-          className="form-control"
-          id="password"
+          type={showPassword ? 'text' : 'password'}
           value={password}
           onChange={e => setPassword(e.target.value)}
-          required
+          className='form-control'
+          placeholder='Password'
         />
+        <span className="input-group-text">
+          <button
+            className="btn p-0 m-0"
+            type='button'
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <HideIcon /> : <VisibleIcon />}
+          </button>
+        </span>
       </div>
 
       <button

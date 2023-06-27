@@ -5,8 +5,6 @@ import { getTokenHeader } from '../../../helper/getTokenHeader';
 import { toast } from 'react-toastify';
 
 const ProfileForm = ({ user, setEditProfile }) => {
-  console.log('user :', user);
-  const [email, setEmail] = useState(user.email)
   const [name, setName] = useState(user.name)
   const [phoneNum, setPhoneNum] = useState(user.phoneNum)
   const [street, setStreet] = useState(user.address.street)
@@ -50,8 +48,7 @@ const ProfileForm = ({ user, setEditProfile }) => {
         </label>
         <input
           type='text'
-          value={email}
-          onChange={e => setEmail(e.target.value)}
+          value={user.email}
           className='form-control'
           placeholder='Full Name'
           disabled

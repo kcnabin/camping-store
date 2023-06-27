@@ -5,14 +5,16 @@ import { Link } from 'react-router-dom'
 const RegisterPage = () => {
   return (
     <Page100Vh>
-      <div className="card px-3 py-4 shadow rounded-4">
-        <p className="h4 text-center mb-4">
+      <div className="card p-4 shadow rounded-4 mx-4">
+        <p className="h4 text-center">
           Register
         </p>
 
-        <RegisterForm />
+        <div className="py-5">
+          <RegisterForm />
+        </div>
 
-        <div className="mt-3 d-sm-flex align-items-center">
+        <div className="d-flex align-items-center">
           <span className="fw-bold me-2">
             Already have an account ?
           </span>
