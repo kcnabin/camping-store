@@ -4,6 +4,7 @@ import ProductsLayout from '../productCategory/ProductsLayout'
 import { handleError } from '../../helper/handleError'
 import axios from 'axios'
 import LoadingIcon from '../../svgIcons/LoadingIcon'
+import CategoryLayout from '../productCategory/CategoryLayout'
 
 const RandomProducts = () => {
   const quantity = 8
@@ -37,7 +38,7 @@ const RandomProducts = () => {
       </h5>
 
       {
-        randomProducts && <ProductsLayout products={randomProducts} />
+        randomProducts && <CategoryLayout products={randomProducts} />
       }
 
       {loading

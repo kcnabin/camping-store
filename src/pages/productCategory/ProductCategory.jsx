@@ -3,28 +3,23 @@ import { useParams } from 'react-router-dom'
 import { useFetchData } from '../../hooks/useFetchData'
 import ProductsLayout from './ProductsLayout'
 import LoadingIcon from '../../svgIcons/LoadingIcon'
+import PriceFilter from './PriceFilter'
 
 const ProductCategory = () => {
   const { cId } = useParams()
-  const { value: categoryProducts } = useFetchData(`/products/category/${cId}`, cId)
+  const { value: categoryProducts, setValue: setCategoryProducts } = useFetchData(`/category-products/${cId}`, cId)
+  console.log('categoryProducts :', categoryProducts);
 
   if (categoryProducts) {
     return (
-      <div className='mx-4 mb-4'>
-        <div className='align-center my-2'>
-          <h4 className=''>
-            {
-              (categoryProducts.length > 0)
-                ? categoryProducts[0].category
-                : 'No Items in Category'
-            }
-          </h4>
-          <span className='ms-2 text-muted'>
-            {`(${categoryProducts.length} products)`}
-          </span>
+      <div className='d-flex mt-2'>
+        <div style={{ minWidth: "240px" }} className='d-none d-md-block'>
+          <PriceFilter setFilteredProducts={setCategoryProducts} />
         </div>
 
-        <ProductsLayout products={categoryProducts} />
+        <div className='flex-grow-1'>
+          <ProductsLayout products={categoryProducts} setProducts={setCategoryProducts} />
+        </div>
       </div>
     )
   }

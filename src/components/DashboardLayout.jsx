@@ -11,7 +11,7 @@ const DashboardLayout = ({ left, right }) => {
         </div>
 
         <div className="flex-grow-1">
-          <div className="py-3 px-4">
+          <div className="py-3 px-3">
             {right}
           </div>
         </div>

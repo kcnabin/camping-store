@@ -1,20 +1,49 @@
 import React from 'react'
-import EachProduct from '../products/EachProduct'
+import CategoryLayout from './CategoryLayout'
+import PriceFilter from './PriceFilter'
 
-const ProductsLayout = ({ products }) => {
+const ProductsLayout = ({ products, setProducts }) => {
+
   return (
-    <div className="container-fluid">
-      <div className="row">
-        {
-          products.map((product, i) => (
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={product._id + i}>
-              <div className="hover-zoom border rounded-4 shadow p-1 mb-3">
-                <EachProduct product={product} />
-              </div>
+    <div>
+      <div className='align-center'>
+        <h5 className='ms-3'>
+          {
+            (products.length > 0)
+              ? products[0].category
+              : 'No Items in Category'
+          }
+        </h5>
+
+        <span className='ms-2 text-muted'>
+          {`(${products.length} products)`}
+        </span>
+
+        <span
+          className='btn border border-2 ms-2 d-block d-md-none'
+          data-bs-toggle="offcanvas"
+          data-bs-target="#filterNav"
+        >
+          Filter
+
+          <div className='offcanvas offcanvas-end' id="filterNav">
+            <div className='text-start py-4'>
+              <PriceFilter setFilteredProducts={setProducts} />
+
+              <button
+                className="btn btn-outline-secondary text-reset ms-4 mt-3"
+                data-bs-dismiss="offcanvas"
+              >
+                Close Filter
+              </button>
             </div>
-          ))
-        }
+          </div>
+        </span>
+
       </div>
+
+      <CategoryLayout products={products} />
+
     </div>
   )
 }
