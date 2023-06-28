@@ -7,7 +7,7 @@ const NavBar = () => {
   const location = useLocation()
 
   const getNavLinkStyle = (link) => {
-    let style = 'me-4 py-2 nav-link '
+    let style = ' py-2 nav-link '
     if (location.pathname === `/category/${link}`) {
       style += 'fw-semibold'
     }
@@ -30,6 +30,7 @@ const NavBar = () => {
           ))
         }
       </nav>
+
     )
   }
   return ''

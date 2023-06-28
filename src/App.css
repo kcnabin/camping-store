@@ -158,3 +158,20 @@ a {
   position: absolute;
   bottom: 10px;
 }
+
+.small-search-empty {
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+.small-search {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.z-100 {
+  z-index: 100;
+}
