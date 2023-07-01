@@ -1,21 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ProfileIcon from '../../svgIcons/ProfileIcon'
+import PenIcon from '../../svgIcons/PenIcon'
+import IconText from '../iconText/IconText'
 
 const LoginDropdown = () => {
+
   return (
     <div>
-      <div className='dropdown-options'>
-        <Link to='/login' className='w-100 d-block'>
-          Login
-        </Link>
-      </div>
+      <Link to='/login' className='dropdown-options align-center hover-zoom'>
+        <IconText text='Login'>
+          <ProfileIcon size='20px' />
+        </IconText>
+      </Link>
 
-      <div className='dropdown-options'>
-        <Link to='/register' className='d-block'>
-          Register
-        </Link>
-      </div>
-
+      <Link to='/register' className='dropdown-options align-center hover-zoom'>
+        <IconText text='Register'>
+          <PenIcon size="20px" />
+        </IconText>
+      </Link>
 
     </div>
   )

@@ -93,7 +93,8 @@ const CreateProductsForm = () => {
         }, 2000)
 
       } else {
-        const newProduct = await axios.post('/products/add', productObject, getTokenHeader())
+        await axios.post('/products/add', productObject, getTokenHeader())
+        // const newProduct = await axios.post('/products/add', productObject, getTokenHeader())
         // setTimeout(() => {
         //   navigate(`/product/${newProduct.data._id}`)
         // }, 2000)

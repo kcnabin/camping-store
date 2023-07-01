@@ -5,9 +5,9 @@ import PriceFilter from './PriceFilter'
 const ProductsLayout = ({ products, setProducts }) => {
 
   return (
-    <div>
-      <div className='align-center'>
-        <h5 className='ms-3'>
+    <div className='mx-3'>
+      <div className='align-center flex-wrap my-1'>
+        <h5 className='ms-2'>
           {
             (products.length > 0)
               ? products[0].category

@@ -14,7 +14,7 @@ const ProductInfo = () => {
 
   if (product) {
     return (
-      <div className="container-fluid my-4 px-4">
+      <div className="container-fluid my-3 px-4">
         <div className="row">
           <div className="d-block d-md-none">
             <ProductIntroduction product={product} />

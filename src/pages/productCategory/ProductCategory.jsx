@@ -11,7 +11,7 @@ const ProductCategory = () => {
 
   if (categoryProducts) {
     return (
-      <div className='d-flex mt-2'>
+      <div className='d-flex my-2'>
         <div style={{ minWidth: "240px" }} className='d-none d-md-block'>
           <PriceFilter setFilteredProducts={setCategoryProducts} />
         </div>

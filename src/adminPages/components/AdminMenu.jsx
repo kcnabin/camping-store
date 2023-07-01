@@ -33,42 +33,42 @@ const AdminMenu = () => {
 
       <Link to='/dashboard/admin' className={getStyle('/dashboard/admin')}>
         <GridIcon />
-        <p className='m-0 ms-2 fs-6'>
+        <p className='m-0 ms-3 fs-6'>
           Dashboard
         </p>
       </Link>
 
       <Link to='/dashboard/admin/orders' className={getStyle('/dashboard/admin/orders')}>
         <OrderIcon />
-        <p className='m-0 ms-2 fs-6'>
+        <p className='m-0 ms-3 fs-6'>
           Orders
         </p>
       </Link>
 
       <Link to='/dashboard/admin/products' className={getStyle('/dashboard/admin/products')}>
         <ProductIcon />
-        <p className='m-0 ms-2 fs-6'>
+        <p className='m-0 ms-3 fs-6'>
           Products
         </p>
       </Link>
 
       <Link to='/dashboard/admin/create-products' className={getStyle('/dashboard/admin/create-products')}>
         <CircleAddIcon />
-        <p className='m-0 ms-2 fs-6'>
+        <p className='m-0 ms-3 fs-6'>
           Add Products
         </p>
       </Link>
 
       <Link to='/dashboard/admin/create-category' className={getStyle('/dashboard/admin/create-category')}>
         <CircleAddIcon />
-        <p className='m-0 ms-2 fs-6'>
+        <p className='m-0 ms-3 fs-6'>
           Add Category
         </p>
       </Link>
 
       <Link to='/dashboard/admin/customers' className={getStyle('/dashboard/admin/customers')}>
         <PeopleIcon />
-        <p className='m-0 ms-2 fs-6'>
+        <p className='m-0 ms-3 fs-6'>
           Customers
         </p>
       </Link>

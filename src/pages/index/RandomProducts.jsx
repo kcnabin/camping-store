@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useFetchData } from '../../hooks/useFetchData'
-import ProductsLayout from '../productCategory/ProductsLayout'
 import { handleError } from '../../helper/handleError'
 import axios from 'axios'
 import LoadingIcon from '../../svgIcons/LoadingIcon'
@@ -33,7 +32,7 @@ const RandomProducts = () => {
 
   return (
     <div className='mx-2 mt-4 mb-2'>
-      <h5 className='ps-4 mb-1'>
+      <h5 className='ms-2 mb-0'>
         On Sale Now
       </h5>
 

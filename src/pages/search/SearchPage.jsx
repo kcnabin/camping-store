@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useSearch } from '../../context/SearchContext'
 import axios from 'axios';
 import { handleError } from '../../helper/handleError';
-import { useFetchData } from '../../hooks/useFetchData';
-import PriceFilter from '../productCategory/PriceFilter';
-import ProductsLayout from '../productCategory/ProductsLayout';
 import LoadingIcon from '../../svgIcons/LoadingIcon';
 import CategoryLayout from '../productCategory/CategoryLayout';
 
 const SearchPage = () => {
-  const { search, setSearch } = useSearch()
+  const { search } = useSearch()
   const searchText = search.replaceAll(' ', '+')
 
   const [products, setProducts] = useState('')
@@ -31,13 +28,13 @@ const SearchPage = () => {
 
     searchProducts()
 
-  }, [search])
+  }, [searchText, search])
 
   if (products) {
     return (
-      <>
-        <div className='align-center mt-2'>
-          <h5 className='ms-3'>
+      <div className='mx-4 my-2'>
+        <div className='align-center flex-wrap'>
+          <h5 className='me-2 ms-1 ms-md-0'>
             {
               (products.length > 0)
                 ? 'Searched Items'
@@ -45,14 +42,14 @@ const SearchPage = () => {
             }
           </h5>
 
-          <span className='ms-2 text-muted'>
+          <span className='text-muted'>
             {`(${products.length} products)`}
           </span>
 
         </div>
 
         <CategoryLayout products={products} />
-      </>
+      </div>
     )
 
   }

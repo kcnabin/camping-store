@@ -32,6 +32,7 @@ import SearchPage from "./pages/search/SearchPage";
 
 const App = () => {
   axios.defaults.baseURL = `http://localhost:3001/api`;
+  // axios.defaults.baseURL = `https://confused-teal-ox.cyclic.app/api`;
 
   return (
     <>

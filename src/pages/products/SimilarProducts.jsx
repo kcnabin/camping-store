@@ -9,17 +9,17 @@ const SimilarProducts = ({ pId, cId }) => {
   if (similarProducts) {
     return (
       <>
-        <p className="h5">
+        <p className="h5 mt-4 m-0">
           Similar Products
         </p>
-        <div className='container-fluid'>
+        <div className='container-fluid p-0'>
           <div className="row">
 
             {
               similarProducts.map(product => {
                 return (
-                  <div className="col-12 col-sm-6 col-md-3 col-lg-3" key={product._id}>
-                    <div className="hover-zoom border p-2 m-2">
+                  <div className="col-6 col-sm-6 col-md-3 p-2" key={product._id}>
+                    <div className="hover-zoom border m-2">
                       <EachProduct product={product} />
                     </div>
                   </div>

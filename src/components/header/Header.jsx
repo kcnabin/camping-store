@@ -105,8 +105,8 @@ const Header = () => {
               </div>
             </div>
 
-            <div className="dropdown-menu w-auto p-0 m-0 g-0">
-              {auth?.user
+            <div className="dropdown-menu p-0 m-0 g-0 overflow-hidden" style={{ minWidth: "200px" }}>
+              {auth?.token
                 ? (<UserDropdown />)
                 : (<LoginDropdown />)}
             </div>

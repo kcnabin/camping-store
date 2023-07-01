@@ -29,27 +29,29 @@ const OfferCards = () => {
     }
   ]
 
+  const cardStyle = `col-6 col-sm-4 col-md-3 px-2`
+
   return (
-    <div className='m-3'>
-      <h5 className='ps-3 mb-2'>Latest Offers</h5>
+    <div className='px-1 mt-3'>
+      <h5 className='ms-2 mb-2'>Latest Offers</h5>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-6 col-sm-4 col-md-3">
+          <div className={cardStyle}>
             <EachCard card={cards[0]} />
           </div>
 
-          <div className="col-6 col-sm-4 col-md-3">
+          <div className={cardStyle}>
             <EachCard card={cards[1]} />
           </div>
 
-          <div className="col-6 col-sm-4 col-md-3">
-            <div className="d-none d-sm-block">
+          <div className={cardStyle}>
+            <div className="d-none d-sm-block" style={{ height: "100%" }}>
               <EachCard card={cards[2]} />
             </div>
           </div>
 
-          <div className="col-6 col-sm-4 col-md-3">
-            <div className="d-none d-md-block">
+          <div className={cardStyle}>
+            <div className="d-none d-md-block" style={{ height: "100%" }}>
               <EachCard card={cards[3]} />
             </div>
           </div>

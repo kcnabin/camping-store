@@ -8,8 +8,10 @@ const IndexPage = () => {
   return (
     <div>
       <CoverImage />
-      <OfferCards />
-      <RandomProducts />
+      <div className='mx-3'>
+        <OfferCards />
+        <RandomProducts />
+      </div>
     </div>
   )
 }
