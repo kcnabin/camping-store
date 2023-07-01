@@ -97,7 +97,7 @@ a {
   text-align: justify;
 }
 
-@media (max-width: 360px) {
+@media (max-width: 390px) {
   .store-title,
   .store-icon {
     display: none;

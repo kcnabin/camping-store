@@ -28,6 +28,7 @@ import CheckOutPage from "./userPages/checkout/CheckOutPage";
 import OrdersPage from "./userPages/orders/OrdersPage";
 import UserDashboard from "./userPages/UserDashboard";
 import OrderDetailLayout from "./userPages/orders/OrderDetailLayout";
+import SearchPage from "./pages/search/SearchPage";
 
 const App = () => {
   axios.defaults.baseURL = `http://localhost:3001/api`;
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/products/:pId" element={<ProductInfo />} />
           <Route path="/category/:cId" element={<ProductCategory />} />
+          <Route path="/search" element={<SearchPage />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

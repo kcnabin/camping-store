@@ -6,6 +6,7 @@ const EachProduct = ({ product }) => {
   return (
     <Link className='p-2'
       to={`/products/${product._id}`}
+      className="overflow-hidden"
     >
       <div className='justify-center ratio ratio-4x3'>
         <img
@@ -20,12 +21,15 @@ const EachProduct = ({ product }) => {
           {product.brand}
         </div>
         <div>
-          {product.name}
+          {(product.name.length > 14)
+            ? `${product.name.substring(0, 14)}...`
+            : product.name
+          }
         </div>
         <div className='fw-light'>
-          NRs.
-          <span className='text-decoration-line-through ms-2'>
-            {product.price.toLocaleString()}
+
+          <span className='text-decoration-line-through'>
+            NRs.{product.price.toLocaleString()}
           </span>
           <span className='ms-2 text-danger fw-bold'>
             {((1 - product.discount / 100) * product.price).toLocaleString()}

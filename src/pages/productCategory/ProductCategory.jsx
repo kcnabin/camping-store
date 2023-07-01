@@ -8,7 +8,6 @@ import PriceFilter from './PriceFilter'
 const ProductCategory = () => {
   const { cId } = useParams()
   const { value: categoryProducts, setValue: setCategoryProducts } = useFetchData(`/category-products/${cId}`, cId)
-  console.log('categoryProducts :', categoryProducts);
 
   if (categoryProducts) {
     return (
