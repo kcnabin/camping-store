@@ -1,18 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import { useFetchData } from '../../hooks/useFetchData'
 import { Link } from 'react-router-dom'
 import EachOrderItem from './EachOrderItem';
 import { getDateAndTime } from '../../helper/dateHelper';
+import { sortByLatest } from '../../helper/orderSorter';
+import { handleError } from '../../helper/handleError';
+import { getTokenHeader } from '../../helper/getTokenHeader';
+import { toast } from 'react-toastify';
+
 
 const AllOrders = () => {
   const { value: orders } = useFetchData('/user-orders')
+  const [sortedOrders, setSortedOrders] = useState('')
+
+  useEffect(() => {
+    if (orders) {
+      setSortedOrders(sortByLatest(orders))
+    }
+  }, [orders, setSortedOrders])
 
   const cancelOrder = async (orderId) => {
-    console.log('orderId :', orderId);
+    if (window.confirm('Confirm Cancellation?')) {
+      const url = `/order/cancel/${orderId}`
 
+      try {
+        await axios.put(url, { status: 'cancelled' }, getTokenHeader())
+        toast.success('Order cancelled!')
+
+        setSortedOrders(sortedOrders => sortedOrders.map(order => {
+          if (order._id.toString() === orderId.toString()) {
+            return ({ ...order, status: 'cancelled' })
+          }
+          return order
+        }))
+
+      } catch (error) {
+        return handleError(error)
+      }
+    }
   }
 
-  if (orders) {
+  if (sortedOrders) {
     return (
       <div>
         <div>
@@ -21,7 +50,7 @@ const AllOrders = () => {
 
         <div className='mt-4'>
           {
-            orders.map(order => {
+            sortedOrders.map(order => {
               return (
                 <div
                   key={order._id}

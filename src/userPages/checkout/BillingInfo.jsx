@@ -8,7 +8,6 @@ const BillingInfo = ({ actions }) => {
 
   useEffect(() => {
     if (userInfo) {
-      console.log('userInfo :', userInfo);
       setEmail(userInfo.email)
       setFullName(userInfo.name)
       setPhoneNum(userInfo.phoneNum)

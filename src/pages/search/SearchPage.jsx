@@ -19,7 +19,6 @@ const SearchPage = () => {
     const searchProducts = async () => {
       try {
         const { data } = await axios.get(`/search/${searchText}`)
-        console.log('data :', data);
         setProducts(data)
       } catch (error) {
         return handleError(error)
