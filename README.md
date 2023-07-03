@@ -1,5 +1,3 @@
-Frontend for FullStack MERN App - Camping Store (E-commerce App)
-
 Camping Store [MERN E-Commerce Project]
 
 Frontend
@@ -10,8 +8,38 @@ Backend
 Github: https://github.com/kcnabin/camping-store-backend
 Built using: Express
 
-Database:
+Database
 MongoDB
 
-![screencapture-localhost-3000-dashboard-admin-orders-64a17a80e8b584ca1d3f5b4e-2023-07-03-12_31_24](https://github.com/kcnabin/camping-store/assets/47650557/94c4675f-406b-4670-8c75-200cf4b07800)
+Demo Video: https://youtu.be/gxHlWSDwj40
+
+Index Page
+![Alt text](./public/project-demo-photos/indexPage.png?raw=true "Index Page")
+
+Categories Page
+![Alt text](./public/project-demo-photos/categoriesPage.png?raw=true "Categories Page")
+
+Product Details Page
+![Alt text](./public/project-demo-photos/productDetails.png?raw=true "Product Details Page")
+
+Cart Page
+![Alt text](./public/project-demo-photos/orderPage.png?raw=true "Cart Page")
+
+Order Details Page
+![Alt text](./public/project-demo-photos/orderDetails.png?raw=true "Order Details Page")
+
+Left Navigation Mobile
+![Alt text](./public/project-demo-photos/sideNavMobile.png?raw=true "Left Navigation Mobile")
+
+Index Page Mobile
+![Alt text](./public/project-demo-photos/indexPageMobile.png?raw=true "Index Page Mobile")
+
+Categories Page Mobile
+![Alt text](./public/project-demo-photos/categoriesPageMobile.png?raw=true "Categories Page Mobile")
+
+Product Details Mobile
+![Alt text](./public/project-demo-photos/productDetailMobile.png?raw=true "Product Details Mobile")
+
+Cart Page Mobile
+![Alt text](./public/project-demo-photos/orderPageMobile.png?raw=true "Cart Page Mobile")
 
