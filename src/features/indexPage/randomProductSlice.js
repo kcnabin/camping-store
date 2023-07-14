@@ -17,11 +17,13 @@ export const fetchRandomProducts = createAsyncThunk(
   }
 );
 
-export const loadMore = createAsyncThunk("/randomProducts/loadMore", () => {
-  return axios
-    .get(`/products/random/${productPerPage}`)
-    .then((res) => res?.data);
-});
+export const loadMore = createAsyncThunk(
+  "randomProducts/loadMore",
+  async () => {
+    const res = await axios.get(`/products/random/${productPerPage}`);
+    return res.data;
+  }
+);
 
 const randomProductSlice = createSlice({
   name: "randomProducts",
@@ -29,18 +31,12 @@ const randomProductSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchRandomProducts.pending, (state) => {
-      // state.loading = true;
-      // state.products = [];
-      // state.error = "";
       return {
         ...state,
         loading: true,
       };
     });
     builder.addCase(fetchRandomProducts.fulfilled, (state, action) => {
-      // state.loading = false;
-      // state.products = action.payload;
-      // state.error = "";
       return {
         ...state,
         loading: false,
@@ -48,9 +44,6 @@ const randomProductSlice = createSlice({
       };
     });
     builder.addCase(fetchRandomProducts.rejected, (state, action) => {
-      // state.loading = false;
-      // state.products = [];
-      // state.error = action.error.message;
       return {
         ...state,
         loading: false,
@@ -58,8 +51,6 @@ const randomProductSlice = createSlice({
       };
     });
     builder.addCase(loadMore.fulfilled, (state, action) => {
-      // state.loading = false;
-      // state.products = [...state.products, ...action.payload];
       return {
         ...state,
         loading: false,
@@ -67,9 +58,9 @@ const randomProductSlice = createSlice({
       };
     });
     builder.addCase(loadMore.rejected, (state, action) => {
-      // state.error = action.error.message;
       return {
         ...state,
+        loading: false,
         error: action.error.message,
       };
     });

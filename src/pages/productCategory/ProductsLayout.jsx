@@ -2,7 +2,7 @@ import React from 'react'
 import CategoryLayout from './CategoryLayout'
 import PriceFilter from './PriceFilter'
 
-const ProductsLayout = ({ products, setProducts }) => {
+const ProductsLayout = ({ products }) => {
 
   return (
     <div className='mx-3'>
@@ -28,7 +28,7 @@ const ProductsLayout = ({ products, setProducts }) => {
 
           <div className='offcanvas offcanvas-end' id="filterNav">
             <div className='text-start py-4'>
-              <PriceFilter setFilteredProducts={setProducts} />
+              <PriceFilter />
 
               <button
                 className="btn btn-outline-secondary text-reset ms-4 mt-3"

@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import randomProductSlice from "../features/indexPage/randomProductSlice";
+import randomProductReducer from "../features/indexPage/randomProductSlice";
+import categoryProductReducer from "../features/categoryPage/categoryProductSlice";
 
 const store = configureStore({
   reducer: {
-    randomProducts: randomProductSlice,
+    randomProducts: randomProductReducer,
+    categoryProducts: categoryProductReducer,
   },
 });
 
