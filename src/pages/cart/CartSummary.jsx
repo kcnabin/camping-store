@@ -2,12 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/UserContext'
 import { getShippingCost } from '../../helper/getShippingCost'
-import { useCart } from '../../context/CartContext'
+// import { useCart } from '../../context/CartContext'
 import { getCartTotal } from '../../helper/getCartTotal'
+import { useSelector } from 'react-redux'
 
 const CartSummary = () => {
   const { auth } = useAuth()
-  const { cart } = useCart()
+  // const { cart } = useCart()
+  const cart = useSelector(state => state.cart)
 
   const subTotal = getCartTotal(cart)
   const shippingCost = getShippingCost()

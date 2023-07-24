@@ -1,9 +1,11 @@
 import React from 'react'
-import { useCart } from '../../context/CartContext'
+// import { useCart } from '../../context/CartContext'
 import EachCartItem from './EachCartItem';
+import { useSelector } from 'react-redux';
 
 const CartItems = () => {
-  const { cart } = useCart()
+  // const { cart } = useCart()
+  const cart = useSelector(state => state.cart)
 
   return (
     <div>

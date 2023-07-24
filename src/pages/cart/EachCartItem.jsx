@@ -2,17 +2,22 @@ import React from 'react'
 import { getDiscountedPrice } from '../../helper/getDiscountedPrice'
 import { Link } from 'react-router-dom'
 import { getImgSrc } from '../../helper/getImgSrc'
-import { useCart } from '../../context/CartContext'
+// import { useCart } from '../../context/CartContext'
 import { deleteItemFromCart } from '../../helper/deleteItemFromCart'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteFromCart } from '../../features/cart/cartSlice'
 
 const EachCartItem = ({ item }) => {
   const { quantity, product } = item
-  const { cart, setCart } = useCart()
+  // const { setCart } = useCart()
+  const cart = useSelector(state => state.cart)
+  const dispatch = useDispatch()
 
   const handleDeleteItem = () => {
+    dispatch(deleteFromCart(product._id))
     const newCart = deleteItemFromCart(cart, product._id)
-    setCart(newCart)
     localStorage.setItem('camping-store-cart', JSON.stringify(newCart))
+
   }
 
   return (

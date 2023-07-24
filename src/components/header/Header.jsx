@@ -6,18 +6,20 @@ import { useAuth } from '../../context/UserContext'
 import UserDropdown from './UserDropdown'
 import LoginDropdown from './LoginDropdown'
 import CartIcon from '../../svgIcons/CartIcon'
-import { useCart } from '../../context/CartContext'
+// import { useCart } from '../../context/CartContext'
 import { getTotalCartQuantity } from '../../helper/getTotalCartQuantity'
 import SideNav from './SideNav'
 import SearchIcon from '../../svgIcons/SearchIcon'
 import SmallSearchBar from './SmallSearchBar'
 import { useSearch } from '../../context/SearchContext'
+import { useSelector } from 'react-redux'
 
 
 const Header = () => {
   const [showSearch, setShowSearch] = useState(false)
   const { auth } = useAuth()
-  const { cart } = useCart()
+  // const { cart } = useCart()
+  const cart = useSelector(state => state.cart)
   const { search, setSearch } = useSearch()
   const navigate = useNavigate()
 
