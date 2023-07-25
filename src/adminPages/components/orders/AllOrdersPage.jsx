@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import axios from 'axios'
-import { useFetchData } from '../../../hooks/useFetchData'
+import { useDispatch, useSelector } from 'react-redux'
+// import axios from 'axios'
+// import { useFetchData } from '../../../hooks/useFetchData'
 
 import OrderDetails from './OrderDetails'
 import LoadingIcon from '../../../svgIcons/LoadingIcon'
-import { sortByLatest } from '../../../helper/orderSorter'
-import { handleError } from '../../../helper/handleError'
-import { getTokenHeader } from '../../../helper/getTokenHeader'
+// import { sortByLatest } from '../../../helper/orderSorter'
+// import { handleError } from '../../../helper/handleError'
+// import { getTokenHeader } from '../../../helper/getTokenHeader'
+import { loadAllOrders, loadOrdersByStatus } from '../../../features/admin/allOrders/allOrdersSlice'
 
 const AllOrdersPage = () => {
-  const { value: allOrders } = useFetchData('/order')
-  const [sortedOrders, setSortedOrders] = useState('')
-
   const [showSingleOrder, setShowSingleOrder] = useState(false)
   const { orderId } = useParams()
+  const [orderStatus, setOrderStatus] = useState('all')
+
+  // const { value: allOrders } = useFetchData('/order')
+  // const [sortedOrders, setSortedOrders] = useState('')
+
+  const { data: allOrders, loading, error } = useSelector(state => state.allOrders)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(loadAllOrders())
+  }, [dispatch])
 
   const allStatus = [
     "processing",
@@ -25,36 +34,53 @@ const AllOrdersPage = () => {
     "declined",
   ]
 
-  useEffect(() => {
-    if (allOrders) {
-      const sorted = sortByLatest(allOrders)
-      setSortedOrders(sorted)
-    }
-  }, [allOrders])
+  // useEffect(() => {
+  //   if (allOrders) {
+  //     const sorted = sortByLatest(allOrders)
+  //     setSortedOrders(sorted)
+  //   }
+  // }, [allOrders])
 
   const changeOrdersDisplay = async (e) => {
-    const statusName = e.target.value
-    const url = `/order/status/${statusName}`
+    // const statusName = e.target.value
+    // const url = `/order/status/${statusName}`
 
-    try {
-      const { data } = await axios.get(url, getTokenHeader())
-      setSortedOrders(sortByLatest(data))
+    // try {
+    //   const { data } = await axios.get(url, getTokenHeader())
+    //   setSortedOrders(sortByLatest(data))
 
-    } catch (error) {
-      return handleError(error)
+    // } catch (error) {
+    //   return handleError(error)
+    // }
+    e.preventDefault()
+
+    let url = ''
+    const status = e.target.value
+    setOrderStatus(status)
+
+    if (status === 'all') {
+      url = '/order'
+    } else {
+      url = `/order/status/${status}`
     }
+
+    dispatch(loadOrdersByStatus(url))
 
   }
 
-  if (showSingleOrder && orderId && sortedOrders) {
-    const singleOrder = sortedOrders.filter(order => order._id.toString() === orderId)[0]
+  if (loading) {
+    return <LoadingIcon />
+  }
+
+  if (showSingleOrder && orderId && (allOrders.length > 0)) {
+    const singleOrder = allOrders.filter(order => order._id.toString() === orderId)[0]
 
     return (
-      <OrderDetails order={singleOrder} orders={sortedOrders} setOrders={setSortedOrders} />
+      <OrderDetails order={singleOrder} orders={allOrders} setOrders={() => console.log('hi')} />
     )
   }
 
-  if (sortedOrders) {
+  if (!error && !loading) {
     return (
       <div>
         <div className='align-center justify-content-between mb-3'>
@@ -64,10 +90,10 @@ const AllOrdersPage = () => {
 
           <div>
             <select className="form-select" onChange={changeOrdersDisplay}>
-              <option>Show By Status</option>
+              <option selected={orderStatus === 'all'} value="all">all orders</option>
 
               {allStatus.map((status, i) => (
-                <option value={status} key={i}>
+                <option selected={orderStatus === status} value={status} key={i}>
                   {status}
                 </option>
               ))}
@@ -89,7 +115,7 @@ const AllOrdersPage = () => {
             </thead>
             <tbody>
               {
-                sortedOrders && sortedOrders.map(order => {
+                (allOrders.length > 0) && allOrders.map(order => {
                   return (
                     <tr key={order._id} className=''>
                       <th scope="row">
@@ -129,7 +155,9 @@ const AllOrdersPage = () => {
     )
   }
 
-  return <LoadingIcon />
+  return ''
+
+
 }
 
 export default AllOrdersPage
