@@ -10,10 +10,9 @@ const initialState = {
 const productPerPage = 6;
 export const fetchRandomProducts = createAsyncThunk(
   "randomProducts/fetch",
-  () => {
-    return axios
-      .get(`/products/random/${productPerPage}`)
-      .then((res) => res?.data);
+  async () => {
+    const res = await axios.get(`/products/random/${productPerPage}`);
+    return res.data;
   }
 );
 

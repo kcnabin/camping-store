@@ -1,31 +1,52 @@
-import { useState } from 'react';
-import { useFetchData } from '../../../../hooks/useFetchData'
-import axios from 'axios';
-import { handleError } from '../../../../helper/handleError';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+// import { useFetchData } from '../../../../hooks/useFetchData'
+// import axios from 'axios';
+// import { handleError } from '../../../../helper/handleError';
 import EachProductLayout from './EachProductLayout';
 import LoadingIcon from '../../../../svgIcons/LoadingIcon';
+import { loadAllProducts, loadMore } from '../../../../features/admin/allProducts/allProductsSlice';
+import { toast } from 'react-toastify';
 
 const Products = () => {
-  const { value: productsData, setValue: setProductData } = useFetchData('/products/all/1')
+  // const { value: productsData, setValue: setProductData } = useFetchData('/products/all/1')
   const [currentPage, setCurrentPage] = useState(1)
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
+
+  const dispatch = useDispatch()
+  const { loading, error, data: productsData } = useSelector(state => state.allProducts)
+
+  useEffect(() => {
+    const url = `/products/all/1`
+    dispatch(loadAllProducts(url))
+  }, [dispatch])
 
   const loadMoreProducts = async () => {
-    setLoading(true)
     try {
-      const { data } = await axios.get(`/products/all/${currentPage + 1}`)
-      setProductData({ ...productsData, products: [...productsData.products, ...data.products] })
+      dispatch(loadMore(`/products/all/${currentPage + 1}`))
       setCurrentPage(currentPage + 1)
-
-    } catch (error) {
-      return handleError(error)
-
-    } finally {
-      setLoading(false)
+    } catch (err) {
+      console.log('err :', err);
+      toast.error(error)
     }
+
+    // setLoading(true)
+    // try {
+    //   const { data } = await axios.get(`/products/all/${currentPage + 1}`)
+    //   setProductData({ ...productsData, products: [...productsData.products, ...data.products] })
+    //   setCurrentPage(currentPage + 1)
+
+    // } catch (error) {
+    //   return handleError(error)
+
+    // } finally {
+    //   setLoading(false)
+    // }
   }
 
-  if (productsData) {
+
+
+  if (!loading && !error) {
     return (
       <div>
         <h5 className="text-center">
@@ -33,7 +54,7 @@ const Products = () => {
         </h5>
 
         {
-          productsData && (
+          (productsData?.products?.length > 0) && (
             <div className='container-fluid'>
               <div className="row">
                 {
@@ -67,6 +88,14 @@ const Products = () => {
 
       </div>
     )
+  }
+
+  if (loading) {
+    return <LoadingIcon />
+  }
+
+  if (error) {
+    return toast.error(error)
   }
 
   return <LoadingIcon />

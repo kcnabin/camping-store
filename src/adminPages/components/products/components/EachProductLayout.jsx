@@ -8,7 +8,7 @@ const EachProductLayout = ({ product }) => {
       <div className="card shadow my-3 hover-zoom">
         <div className='w-100' style={{ height: "150px" }}>
           <img
-            src={getImgSrc(product.photos[0])}
+            src={getImgSrc(product?.photos[0])}
             style={{ height: "100%" }}
             className="card-img-top p-2 object-fit-scale"
             alt={product.name}
