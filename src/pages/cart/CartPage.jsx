@@ -1,11 +1,13 @@
 import React from 'react'
-import { useCart } from '../../context/CartContext'
+// import { useCart } from '../../context/CartContext'
 import { getTotalCartQuantity } from '../../helper/getTotalCartQuantity'
 import CartItems from './CartItems'
 import CartSummary from './CartSummary'
+import { useSelector } from 'react-redux'
 
 const CartPage = () => {
-  const { cart } = useCart()
+  // const { cart } = useCart()
+  const cart = useSelector(state => state.cart)
 
   if (cart?.length >= 0) {
     return (

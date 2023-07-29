@@ -1,23 +1,27 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useAuth } from '../../context/UserContext'
+import { useSearch } from '../../context/SearchContext'
+// import { useCart } from '../../context/CartContext'
+
 import MenuIcon from '../../svgIcons/MenuIcon'
 import ProfileIcon from '../../svgIcons/ProfileIcon'
-import { useAuth } from '../../context/UserContext'
+import CartIcon from '../../svgIcons/CartIcon'
+import SearchIcon from '../../svgIcons/SearchIcon'
+
+import SideNav from './SideNav'
+import SmallSearchBar from './SmallSearchBar'
 import UserDropdown from './UserDropdown'
 import LoginDropdown from './LoginDropdown'
-import CartIcon from '../../svgIcons/CartIcon'
-import { useCart } from '../../context/CartContext'
-import { getTotalCartQuantity } from '../../helper/getTotalCartQuantity'
-import SideNav from './SideNav'
-import SearchIcon from '../../svgIcons/SearchIcon'
-import SmallSearchBar from './SmallSearchBar'
-import { useSearch } from '../../context/SearchContext'
 
+import { getTotalCartQuantity } from '../../helper/getTotalCartQuantity'
 
 const Header = () => {
   const [showSearch, setShowSearch] = useState(false)
   const { auth } = useAuth()
-  const { cart } = useCart()
+  // const { cart } = useCart()
+  const cart = useSelector(state => state.cart)
   const { search, setSearch } = useSearch()
   const navigate = useNavigate()
 

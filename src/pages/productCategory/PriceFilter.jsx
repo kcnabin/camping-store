@@ -1,25 +1,26 @@
 import React from 'react'
-import axios from 'axios'
 import { prices } from '../../filterParams/priceFilter'
-import { handleError } from '../../helper/handleError';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { filterCategoryProducts } from '../../features/categoryPage/categoryProductSlice';
 
-
-const PriceFilter = ({ setFilteredProducts }) => {
+const PriceFilter = () => {
+  const dispatch = useDispatch()
   const categoryId = useLocation().pathname.split('/')[2]
 
-  const handleFilter = async (e) => {
+  const handleFilter = e => {
     const range = e.target.value.replace(',', '-')
-    const filterUrl = `/category-products/filter/${categoryId}/${range}`
+    const url = `/category-products/filter/${categoryId}/${range}`
 
-    try {
-      const { data } = await axios.get(filterUrl)
-      console.log('data :', data);
-      setFilteredProducts(data)
+    dispatch(filterCategoryProducts(url))
+    // try {
+    //   const { data } = await axios.get(filterUrl)
+    //   console.log('data :', data);
+    //   setFilteredProducts(data)
 
-    } catch (error) {
-      return handleError(error)
-    }
+    // } catch (error) {
+    //   return handleError(error)
+    // }
   }
 
   return (

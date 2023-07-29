@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { useCart } from '../../context/CartContext'
+// import { useCart } from '../../context/CartContext'
 import { toast } from 'react-toastify'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../../features/cart/cartSlice'
 
 const CartAction = ({ product }) => {
   const [quantity, setQuantity] = useState(1)
@@ -11,18 +13,29 @@ const CartAction = ({ product }) => {
     }
   }
 
-  const { cart, setCart } = useCart()
+  // const { cart, setCart } = useCart()
+  const cart = useSelector(state => state.cart)
+  const dispatch = useDispatch()
 
   const handleAddToCart = () => {
-    const newCart = [
-      ...cart,
-      {
-        quantity,
-        product
-      }
-    ]
-    setCart(newCart)
-    localStorage.setItem('camping-store-cart', JSON.stringify(newCart))
+    // const newCart = [
+    //   ...cart,
+    //   {
+    //     quantity,
+    //     product
+    //   }
+    // ]
+
+    // setCart(newCart)
+    const newProduct = {
+      quantity,
+      product
+    }
+
+    dispatch(addToCart(newProduct))
+
+    // localStorage.setItem('camping-store-cart', JSON.stringify(newCart))
+    localStorage.setItem('camping-store-cart', JSON.stringify([...cart, newProduct]))
     toast.success('Item added to Cart!')
   }
 
