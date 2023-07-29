@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
-import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchRandomProducts, loadMore } from '../../features/indexPage/randomProductSlice'
-import LoadingIcon from '../../svgIcons/LoadingIcon'
+
 import CategoryLayout from '../productCategory/CategoryLayout'
+import { toast } from 'react-toastify'
+import LoadingIcon from '../../svgIcons/LoadingIcon'
 
 const RandomProducts = () => {
   // const quantity = 8
